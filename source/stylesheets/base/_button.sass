@@ -1,0 +1,30 @@
+//------------------------------------------------------------
+//
+//  $button
+//
+//------------------------------------------------------------
+
+
+
+//
+// Buttons
+//
+
+.button
+    padding: em-font(10px) em-font(20px) em-font(10px)
+    text-decoration: none
+    color: rgba(255,255,255,.95)
+    font-weight: bold
+    background-color: $peach
+    color: #fff
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    -webkit-appearance: none
+    +border-radius(4px)
+    +transition(all .05s $easeInOutQuad)
+    +userselect(none)
+
+    &:hover
+        text-decoration: none
+        color: #fff
+        background-color: lighten($peach, 5%)
+

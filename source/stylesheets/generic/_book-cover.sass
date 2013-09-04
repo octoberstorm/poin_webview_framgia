@@ -1,0 +1,150 @@
+//------------------------------------------------------------
+//
+//  $BOOK-COVER
+//
+//------------------------------------------------------------
+
+
+//
+// Start designing books
+//
+
+
+.book-cover__book-inner
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+
+
+
+//
+// Make over your book cover
+// with following elements.
+//
+//  # Makeovers
+//  - Subtle box-shadow
+//  - Square inner gutter
+//  - 'Book-like' overlay
+//
+.book-cover__makeup
+
+    overflow: hidden
+    
+    +border-radius($brand-round)
+
+    // Add nice shadow for book cover.
+    +box-shadow(0 1px 3px rgba(0,0,0,.3))
+
+
+    // Change border-radius for bigger view port size such as tablet & laptop
+    +breakpoint(palm)
+        +border-radius($brand-round +2px)
+
+
+
+    &:before // Square gutter
+        content: ''
+        display: block
+        position: absolute
+        top: 5%
+        left: 5%
+        right: 5%
+        bottom: 5%
+        width: 90%
+        height: 90%
+        border: 1px solid rgba(255,255,255, .3)
+        +border-radius($brand-round)
+
+        +breakpoint(palm)
+            +border-radius($brand-round +2px)
+
+
+
+    &:after // Book like gradient overlay
+        content: ''
+        width: 100%
+        height: 100%
+        display: block
+        position: absolute
+        left: 0
+        top: 0
+        +background(linear-gradient(left, rgba(0,0,0,0.01) 0%, rgba(0,0,0,.2) 30%, rgba(0,0,0,0.01) 100%))
+
+
+
+        +border-radius($brand-round)
+
+        +breakpoint(palm)
+            +border-radius($brand-round +2px)
+
+
+
+
+
+
+
+//
+// Add border-radius for image tag itself
+// In case border radius over flow is not applyed
+//
+
+.book-cover__makeup img
+    +border-radius($brand-round)
+
+    
+    +breakpoint(palm)
+        +border-radius($brand-round +2px)
+
+
+
+
+
+
+
+
+.book-cover__book-title
+    position: absolute
+    display: block
+    text-align: center
+    +adjust-font-size-to(10px)
+    +adjust-leading-to(.5, 10px)
+    top: 12%
+    left: 10%
+    width: 80%
+    font-weight: bold
+    color: #ffffff
+    text-shadow: 0 1px rgba(0,0,0,.3)
+    z-index: 10
+
+    &:after // under accent border
+        content: ''
+        position: relative
+        display: block
+        margin: em-font(20px) auto 0
+        width: em-font(30px, 10px)
+        height: em-font(1px, 10px)
+        background-color: rgba(255,255,255,.95)
+
+    +breakpoint(palm)
+        +adjust-font-size-to(14px)
+
+
+    +breakpoint(desk)
+        font-size: 80%
+
+
+
+
+
+
+
+
+
+
+
+
+

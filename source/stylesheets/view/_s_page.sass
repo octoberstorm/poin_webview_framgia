@@ -1,0 +1,1028 @@
+//------------------------------------------------------------
+//
+//  $Page
+//
+//------------------------------------------------------------
+
+
+//
+// * Give the page wild life.
+//
+
+.page--wrapper
+    width: 100%
+    position: relative
+    display: block
+    
+
+
+
+
+
+//
+// * Show book owner & his/her name when its smaller than laptop
+//
+
+.page--header
+    width: 100%
+    position: relative
+    +padding-leader(1)
+    +padding-trailer(1)
+    background-color: $black-lighter
+
+
+    // hide when it's laptop
+    +breakpoint(lap)
+        display: none
+
+
+    
+
+
+//
+// Set link to the book itself.
+//
+
+.page--header__link
+    display: block
+
+
+
+//
+// Give it a width and align center
+//
+
+.page--header__inner
+    width: 90%
+    max-width: 550px
+    margin-left: auto
+    margin-right: auto
+    overflow: hidden
+    @extend .cf
+
+
+
+
+
+
+
+
+
+
+
+//
+// Set page container
+//
+
+.page--container
+    width: 100%
+    display: block
+    position: relative
+
+    //
+    // Add padding for the top of its container
+    //
+
+    +breakpoint(desk)
+        +padding-leader(5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Start designing "half size" book.
+// Make rooms for half book & owner name
+// Give half book 30%, and other 70% for 
+// ^.page--header--owner
+//
+// Added "max-height" for the half book
+// to clip its left over.
+//
+
+.page--book-half__container
+    width: 30%
+    float: left
+    display: block
+    position: relative
+    max-height: em-font(60px)
+
+    //
+    // Draw shadow for the end of bleading books edge.
+    // See this helpful article.
+    // http://ivomynttinen.com/blog/going-crazy-with-css3-issue-3-creating-ellipse-shaped-shadows/
+    //
+    &:after
+        width: 100%
+        height: 8px
+        content: ""
+        
+        position: absolute
+        left: 0
+        bottom: -10px
+        
+        /*This is where the magic happens: by using two border-radii, we can draw an ellipse. Play around with these values and see how this modifies the rendering.*/
+        border-radius: 520px / 8px
+        box-shadow: 0 0 12px rgba(0,0,0,.9)
+
+
+
+
+//
+// "Half book" design will starts from here.
+//
+
+$silver-ratio                 : 141.42%
+
+.page--book-half
+    position: relative
+    display: block
+    width: 90%
+    left: 6%
+    overflow: hidden
+
+
+    //
+    // Magic will happen with this spell
+    // This will keep silver ratio whatever window changed its width.
+    // http://stackoverflow.com/questions/12121090/responsively-change-div-size-keeping-aspect-ratio
+    //
+
+    &:after
+        content: ''
+        padding-top: $silver-ratio
+        display: block
+
+
+
+
+
+
+//
+// Starts book design
+//
+
+.page--book-half__inner
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+
+
+
+
+
+
+//
+// Book Cover image design
+//
+
+.page--book-half__bookcover
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-image: url(../images/sake_009.jpg)
+    background-position: center
+    -webkit-background-size: cover
+    -moz-background-size: cover
+    -o-background-size: cover
+    background-size: cover
+    overflow: hidden
+    +border-radius($brand-round)
+    +box-shadow(0 1px 3px rgba(0,0,0,.2), inset 0 0 0 .5px rgba(0,0,0,.1), inset 0 0 0 1px rgba(255,255,255,.15))
+
+
+    // Make it clisp when it's bigger than tablet
+    +breakpoint(palm)
+        +border-radius($brand-round +2px)
+
+
+
+    &:before // Square gutter
+        content: ''
+        display: block
+        position: absolute
+        top: 5%
+        left: 5%
+        right: 5%
+        bottom: 5%
+        width: 90%
+        height: 90%
+        border: 1px solid rgba(255,255,255, .3)
+        +border-radius($brand-round)
+
+        +breakpoint(palm)
+            +border-radius($brand-round +2px)
+
+
+
+    &:after // Book like gradient overlay
+        content: ''
+        width: 100%
+        height: 100%
+        display: block
+        position: absolute
+        left: 0
+        top: 0
+        +background(linear-gradient(left, rgba(0,0,0,0.01) 0%, rgba(0,0,0,.2) 30%, rgba(0,0,0,0.01) 100%))
+
+
+
+
+
+
+
+//
+// Define the size of book title.
+//
+
+.page--book-half__title
+    position: absolute
+    display: block
+    text-align: center
+    +adjust-font-size-to(10px)
+    +adjust-leading-to(.6, 10px)
+
+    top: 12%
+    left: 10%
+    width: 80%
+    font-weight: bold
+    color: #ffffff
+    text-shadow: 0 1px rgba(0,0,0,.3)
+    z-index: 10
+
+    // +breakpoint(palm)
+    //     +adjust-font-size-to(14px)
+
+
+    &:after // under accent border
+        content: ''
+        position: relative
+        display: block
+        margin: em-font(16px) auto 0
+        width: em-font(30px, 10px)
+        height: em-font(1px, 10px)
+        background-color: rgba(255,255,255,.95)
+
+
+
+
+
+
+
+
+
+
+
+// 
+// Define another 70% width for owner's name area.
+// The other is ".page--book-half__container"  
+//
+
+.page--header--owner
+    width: 70%
+    float: left
+    display: block
+    position: relative
+    padding-left: 3%
+    color: $white
+
+
+
+
+
+
+
+//
+// Set owner's title & name
+//
+
+// set title size
+.page--header--owner__title
+    +adjust-font-size-to(14px)
+
+    // adjust position
+    padding-top: em-font(10px)
+    
+// set name size
+.page--header--owner__name
+    font-weight: bold
+    +adjust-font-size-to(18px)
+    letter-spacing: em-font(1px)
+
+    // Trancate when it will be 2 line long.
+    width: 100%
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Define width for page itself, and align it center.
+//
+
+.page--inner
+    width: 90%
+    max-width: 550px
+    margin-left: auto
+    margin-right: auto
+
+
+
+
+
+
+
+
+
+
+//
+// Container of page photo
+//
+
+.page--photo
+    position: relative
+    overflow: hidden
+    width: 100%
+    height: 100%
+    vertical-align: bottom
+    
+    +border-radius($brand-round)
+    +box-shadow(0 1px 3px rgba(0, 0, 0, 0.2))
+
+    margin-top: 5%
+
+    +breakpoint(lap)
+
+        // Remove margin-top, because you have nice paw icon above it.
+        margin-top: 0
+
+        // To stop blinking other elements when hover over its element.
+        // Hate that blink... Aww buggy...
+        -webkit-backface-visibility: hidden
+        -webkit-transform-style: preserve-3d
+
+
+
+
+
+
+
+
+
+//
+// Invisible element contained book owner & book cover
+// It will reveal when hover over its element.
+//
+
+.page--photo--book-invisible
+    
+    // Hidden when its smaller than laptop
+    // Because you will see book cover & owner name
+    // on the top of the page.
+    display: none
+
+    // Adjust design
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    overflow: hidden
+    z-index: 10
+    +border-radius($brand-round)
+
+    // Add gradient overlay
+    +background(linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.9)))
+    
+    // Hidden from view    
+    +opacity(0)
+
+    // Set transition for hover effect.
+    +transition(opacity .2s $easeInOutQuad)
+
+
+    // Display when its larter than tablet
+    +breakpoint(lap)
+        display: block
+
+
+
+
+
+
+
+
+
+//
+// Display when hover over on ".page--photo"
+//
+
+.page--photo:hover .page--photo--book-invisible
+    +breakpoint(lap)
+        +opacity(1)
+
+
+
+
+
+
+
+// 
+// This is the acctual div for wrapping 
+// book cover & owner's info.
+// Display it to the bottom of the page pic.
+// 
+
+.page--photo--book-invisible__inner
+    position: absolute
+    bottom: 0
+    width: 100%
+    z-index: 100
+
+
+
+
+
+
+
+
+// 
+// Give the invisible book area width.
+// So that it will be set in center
+// 
+
+.page--photo--book-invisible__container
+    position: relative
+    width: 90%
+    margin-right: auto
+    margin-left: auto
+    overflow: hidden
+    margin-bottom: 1em
+
+
+
+
+
+
+
+
+
+//
+// Set "How Was It?" area
+// ("How Was It" means digits & a feeleing)
+//
+
+
+// Position it to the right bottom edge of pic
+.page--photo__howwasit
+    position: absolute
+    bottom: 0
+    right: 0
+    z-index: 1
+
+    // To stop blinking other elements when hover over its element.
+    // Hate that blink... Aww buggy...
+    -webkit-backface-visibility: hidden
+    -webkit-transform-style: preserve-3d
+
+
+    +breakpoint(lap)
+        font-size: 80%
+
+
+
+// Set number
+.page--photo__num
+    +adjust-font-size-to(92px)
+    @extend %helveticaneue-light
+    font-weight: 300
+    color: $white-onphoto
+    display: inline-block
+    position: relative
+    margin-right: em-font(-4px)
+    letter-spacing: -2px
+    font-weight: lighter
+    text-shadow: $text-shadow-onphoto
+
+
+
+
+
+
+
+
+
+
+//
+// Set feeling default settings
+// This letter spacing should be changed in case the page is "good" or "bad."
+//
+.page--photo__feeling
+    position: relative
+    +adjust-font-size-to(15px)
+    color: $white-onphoto
+    display: inline-block
+    font-weight: bold
+    text-transform: uppercase
+    top: em-font(-30px)
+    margin-right: em-font(-9px)
+    +rotate(-90deg)
+    text-shadow: $text-shadow-onphoto
+
+// If good,
+.feeling__good
+    letter-spacing: em-font(5px)
+
+// If bad.
+.feeling__bad
+    letter-spacing: em-font(10px)
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Add border-radius for image tag itself
+// In case border radius over flow is not applyed
+//
+
+.page--photo img
+    +border-radius($brand-round)
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Wrap page body.
+// It contains title & paragraphs
+//
+
+.page--body
+    position: relative
+    display: block
+    
+
+
+
+
+
+
+
+//
+// Adjust the title of the page
+//
+
+.page__title
+    +adjust-font-size-to(28px)
+    +leader(.5)
+    +trailer(.5)
+    color: $black
+    font-weight: 700
+
+
+
+
+
+//
+// Adjust the paragraph of the page
+//
+
+.page__paragraph
+    // +adjust-font-size-to(18px)
+    +trailer(1)
+    color: $black-lighter
+    @extend %georgia
+
+    font-weight: 400
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Set author area
+//
+
+
+.page--author
+    +padding-leader(1)
+    +padding-trailer(1)
+    border-top: $section-bar-primary
+    
+    // remove border-bottom for tablet.
+    // because you will use bottom space for "Read Next"
+    +breakpoint(palm)
+        border-bottom: $section-bar-primary
+    
+
+
+
+.page--author__icon
+    display: inline-block
+    width: em-font(48px)
+    height: em-font(48px)
+    margin-right: em-font(10px)
+    +border-radius($brand-round)
+    overflow: hidden
+    vertical-align: bottom
+
+
+
+
+
+
+
+
+//
+// Display inline the author info area
+//
+
+
+.page--author__info
+    display: inline-block
+    width: 75%
+    
+
+
+
+
+
+//
+// Set author title ("written by") & name
+//
+
+.page--author__title
+    color: $black-lightest
+    display: block
+    +adjust-font-size-to(14px)
+    letter-spacing: em-font(2px)
+    font-weight: 400
+
+
+.page--author__name
+    font-weight: 700
+    +adjust-font-size-to(20px)
+    +adjust-leading-to(1.2, 20px)
+    letter-spacing: em-font(1px)
+    color: $black-lighter
+    text-decoration: none
+
+
+    // Trancate when it will be 2 line long.
+    width: 100%
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Set the navigation for mobile and laptop
+// for displaying "Previous" or "Next" on footer.
+//
+
+.page--nav
+    display: block
+    overflow: hidden
+    background-color: $black-lighter    
+
+    // Remove background color in order to match "White" background on laptop    
+    +breakpoint(lap)
+        background: $white
+
+
+
+
+
+
+
+
+
+//
+// Align center and add width for navigation inner
+//
+
+.page--nav__inner
+
+    @extend .page--inner
+
+    // Remove the margin you've just set above
+    +breakpoint(lap)
+        margin-bottom: 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Display previous & next page as "read next"
+// Yes I'm just pretending Amazons "You might..." trush.
+// * Note: Remove this when it's laptop because 
+//         it will turn into real "Prev" & "Next" literally 
+//
+
+.page--read-next
+    text-transform: uppercase
+    font-weight: bold
+    text-align: center
+    color: $black-lightest
+    +padding-leader(2)
+    +padding-trailer(1)
+
+    // Show accent undre line
+    &:after
+        display: block
+        content: '' 
+        width: em-font(30px)
+        height: 3px
+        margin-top: em-font(10px)
+        margin-left:  auto
+        margin-right: auto
+        background: $black-lightest
+
+
+    // Display none when its laptop.
+    +breakpoint(lap)
+        display: none
+
+
+
+
+
+
+
+
+
+
+// 
+// Specific previous & next navigation design
+//
+
+
+.page--prev, .page--next
+    
+    // for mobile & tablet
+    position: relative
+    display: block
+    width: 100%
+    text-align: left
+    +padding-leader(.5)
+    +padding-trailer(.5)
+    +adjust-font-size-to(24px)
+
+    color: $white
+    font-weight: bold
+    text-decoration: none
+
+
+    // Add border-bottom for each links
+    border-bottom: $section-bar-second
+    border-bottom-color:  $black
+    border-bottom-style: dotted
+
+
+    // Make it fluid bigger & play with animation on laptop size screen!
+    +breakpoint(lap)
+        position: fixed
+        top: 46%
+        width: em-font(130px)
+        overflow: hidden
+    
+        color: $black-lightest
+        +adjust-font-size-to(18px)
+
+        // Remove border-bottoms from the vintage old age.
+        border-bottom: none
+
+
+        // Add white space in order to click easely
+        +padding-leader(1)
+        +padding-trailer(1)
+
+
+        // background arrow image
+        $page-arrow-size:          em-font(10px)
+
+        -webkit-background-size: $page-arrow-size
+        -moz-background-size: $page-arrow-size
+        background-size: $page-arrow-size
+        +transition(transform .3s $easeInOutQuad)        
+
+
+        // To stop blinking other elements when hover over its element.
+        // Hate that blink... Aww buggy...
+        -webkit-backface-visibility: hidden
+        -webkit-transform-style: preserve-3d
+
+
+
+        // Animate a bit to suggest there's next or previous page.
+        &:hover
+            +translateX(0)
+
+
+
+//
+// Variable for the navigation position from the edge of the viewport
+// NOTE: this variable is for laptop
+//
+
+$page-nav-position-from-side:       5% 
+
+
+
+//
+// Start designing previous link
+//
+
+.page--prev
+    +breakpoint(lap)
+
+        // Position the navigation
+        left: $page-nav-position-from-side
+
+        // Display prev icon
+        background: url(../images/page/prev.svg) no-repeat
+        background-position: left
+        padding-left: em-font(20px)
+
+        // Make arrow closer to the main content
+        +translateX(30px)
+
+
+// Fall back for no svg supported browser
++breakpoint(lap)
+    .no-svg .page--prev
+        background: url(../images/page/prev.png) no-repeat        
+    
+
+
+//
+// Start designing next link
+//
+
+.page--next
+
+    // Let's change it drastically.
+    +breakpoint(lap)
+
+        // Position the navigation
+        right: $page-nav-position-from-side
+        text-align: right
+
+        // Display prev icon
+        background: url(../images/page/next.svg) no-repeat
+        background-position: right
+        padding-right: em-font(20px)
+
+
+
+        // Make arrow closer to the main content
+        +translateX(-30px)
+
+
+        &:hover
+            +translateX(0)
+
+// Fall back for no svg supported browser
++breakpoint(lap)
+    .no-svg .page--prev
+        background: url(../images/page/next.png) no-repeat        
+
+
+
+
+
+
+
+
+
+//
+// Start navigation design for laptop
+//
+
+.page--nav--link__lap
+    // Trancate when it will be 2 line long.
+    width: 100%
+    display: block
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+
+    // Hide title of next or prev page in order to 
+    // make user concentrate on reading current page.
+    +breakpoint(lap)
+        +opacity(0)
+        +transition(opacity .5s .1s ease)
+
+
+// Show nav link text when hover over on ".page--prev" or ".page--next"
+
++breakpoint(lap)
+    .page--prev, .page--next
+        &:hover
+            .page--nav--link__lap
+                +opacity(1)
+                color: $black-lightest
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Adjust footer design spesificly only on page.
+//
+
+
+.page--container .footer
+    background: $black-lighter
+
+
+    // Remove background color in order to match "White" background on laptop    
+    +breakpoint(lap)
+        background: $white
+
+
+
+
+

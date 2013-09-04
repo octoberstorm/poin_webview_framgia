@@ -1,0 +1,88 @@
+//------------------------------------------------------------
+//
+//  $Download
+//
+//------------------------------------------------------------
+
+
+
+//
+// Show "Download Poin on the app store" in header 
+// when its mobile or tablet. 
+//
+
+.download__header
+    display: block
+    position: relative
+    width: 100%
+    background-color: $black
+    text-align: center
+
+    // Hide when its larger than laptop
+    +breakpoint(lap)
+        display: none
+
+.download__link
+    text-decoration: none
+    display: block
+    color: $white
+    text-align: center
+    font-weight: bold
+    text-decoration: underline
+    +adjust-font-size-to(14px)    
+    +padding-leader(1)
+    +padding-trailer(1)
+
+
+
+
+
+
+
+//
+// Show "Download Poin on the app store" on my books above  
+// when its laptop.
+//
+
+.download--paw__lap
+
+    // Hide when it's mobile or tablet. 
+    display: none
+
+
+    // Display download link when it's larger than laptop 
+    +breakpoint(lap)
+        display: block
+        text-align: center
+        +padding-trailer(1)
+        +padding-leader(1)
+
+
+
+
+
+
+
+
+//
+// Design paw link
+//
+
+.download__paw
+    display: block
+    width: em-font(20px)
+    height: em-font(20px)
+    margin-right: auto
+    margin-left: auto
+    +opacity(.2)
+    background: url(../images/paw-black.svg) no-repeat
+    -webkit-background-size: 100%
+    -moz-background-size: 100%
+    background-size: 100%
+    background-position: center
+    
+
+// Fall back for none svg's
+.no-svg .download__paw
+    background: url(../images/paw-black.png) no-repeat
+

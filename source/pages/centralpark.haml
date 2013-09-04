@@ -1,0 +1,83 @@
+---
+layout: l_page
+title: Central Park
+---
+
+// Partial download header for mobile and tablet viewport
+= partial "partials/download-header-palm"
+
+%header.page--header
+    %a.page--header__link{:href => "../pages/nyc.html"} 
+        .page--header__inner
+            .page--book-half__container
+                .page--book-half
+                    .page--book-half__inner
+                        .page--book-half__title My Favorite NYC
+                        .page--book-half__bookcover{:style => "background-image: url(../images/about/ny.jpeg);"}
+            .page--header--owner
+                .page--header--owner__title
+                    Owner
+                .page--header--owner__name
+                    Shota Setoguchi
+
+
+%section.page--container
+
+    // Partial download header for mobile and tablet viewport
+    = partial "partials/download-header-lap"
+
+    .page--inner
+        .page--photo
+            .page--photo--book-invisible
+                %a.page--photo--book-invisible__inner{:href => "../pages/nyc.html"} 
+                    .page--photo--book-invisible__container
+                        .page--book-half__container
+                            .page--book-half
+                                .page--book-half__inner
+                                    .page--book-half__title My Favorite NYC
+                                    .page--book-half__bookcover{:style => "background-image: url(../images/about/ny.jpeg);"}
+                        .page--header--owner
+                            .page--header--owner__title
+                                Owner
+                            .page--header--owner__name
+                                Shota Setoguchi
+            
+            .page--photo__howwasit
+                .page--photo__num 98
+                .page--photo__feeling.feeling__good good!
+
+            .img--holder
+                %img{:src => "../images/loader_page.gif", "data-src" => "../images/about/centralpark.jpeg", :alt => "Brooklyn"}/ 
+
+
+        .page--body
+            %h1.page__title 
+                Central Park
+            %p.page__paragraph
+                冬のCentral Park、夏のCentral Park、春のCentral Park。どれをとっても本当に心地いい！John Lennonの住んでたマンションにいつか住みたいな。 http://www.nycgo.com/
+            .page--author
+                %a.page--author__icon{:href => "../pages/nao.html"} 
+                    %img.js-load{:src => "../images/usericon/shota.jpg", :alt => "Shota Setoguchi"}/ 
+                .page--author__info
+                    %span.page--author__title
+                        Written by
+                    %a.page--author__name{:href => "../pages/nao.html"} 
+                        Shota Setoguchi
+
+        // Partial share buttons
+        = partial "partials/share-buttons"
+
+
+    %nav.page--nav
+        .page--nav__inner
+            .page--read-next
+                Read next
+
+            %a.page--prev{:href => "../pages/tomato.html"}
+                .page--nav--link__lap
+                    Tomato
+
+        
+        // Start footer from here
+        = partial "partials/footer"
+        

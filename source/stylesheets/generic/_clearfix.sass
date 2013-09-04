@@ -1,0 +1,20 @@
+//-----------------------------------------------------------
+//
+//  $CLEARFIX
+//
+//-----------------------------------------------------------
+//
+// Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+// Extend the clearfix class with Sass.
+// @extend %cf
+// and over in your markup.
+//
+//
+
+
+.cf
+    &:after
+        content: ""
+        display: table
+        clear:both
+

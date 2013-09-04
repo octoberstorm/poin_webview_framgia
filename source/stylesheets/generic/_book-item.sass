@@ -1,0 +1,114 @@
+
+//------------------------------------------------------------
+//
+//  $BOOK-ITEM
+//
+//------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+//
+// Set the size of books.
+// This must follow silver ratio.
+// Use such service to find out nice ratio generator.
+// http://hiritsu.blogspot.jp/
+// 
+
+$profile-book-gamma-size      : 30%
+$profile-book-epsilon-size    : 16%
+$profile-gutter               : 5%
+$profile-gutter-bottom        : em-font(75px)
+
+// 
+// * NOTE: silver ratio is already mentioned in 
+// *       ^ .profile--user__container
+//
+$silver-ratio                 : 141.42%
+
+
+.book--item
+    position: relative
+    display: block
+    float: left
+    
+    width: $profile-book-gamma-size
+    margin-right: $profile-gutter
+    margin-bottom: $profile-gutter-bottom
+
+
+    
+    //
+    // To resolve fixed positioning with animated elements
+    // on the same page.
+    //
+    // Find out more in:
+    // http://stackoverflow.com/questions/11563612/css3-animations-breaking-fixed-positioning-when-page-scrolled
+    //
+    -webkit-transform: translate3d(0, 0, 0)
+    transform        : translate3d(0, 0, 0)
+
+
+    // remove "margin-right" for each 3rd book element in a row
+    &:nth-child(3n+3)
+        margin-right: 0
+
+
+
+    //
+    // Magic will happen with this spell
+    // This will keep silver ratio whatever window changed its width.
+    // http://stackoverflow.com/questions/12121090/responsively-change-div-size-keeping-aspect-ratio
+    //
+    &:after
+        content: ''
+        padding-top: $silver-ratio
+        display: block
+
+
+
+
+
+
+//
+// Adjust for the desktop size viewport
+// 
+//
+      
++breakpoint(desk)
+    .book--item
+        // display 5 books in a row
+        width: $profile-book-epsilon-size
+
+
+        // add "margin-right" for each 3rd book element in a row
+        // Because you removed for the viewport size of laptop
+        &:nth-child(3n+3)
+            margin-right: 5%
+
+        // remove "margin-right" for each 5th book element in a row
+        &:nth-child(5n+5)
+            margin-right: 0
+           
+
+
+
+//
+// * Book item Total pages
+// 
+// NOTE: Book item total pages is defined in
+//       ^_s_profile.sass file.
+//
+
+
+
+
+
+
+

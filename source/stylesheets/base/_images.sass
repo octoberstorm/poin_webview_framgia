@@ -1,0 +1,85 @@
+//------------------------------------------------------------
+//
+//  $images
+//
+//------------------------------------------------------------
+
+//
+// * Fluid images.
+//
+
+img
+    max-width: 100%
+    vertical-align: middle
+    
+
+
+
+//
+// * Non-fluid images if you specify `width` and/or `height` attributes.
+//
+
+img[width],
+img[height]
+    max-width: none
+
+
+
+//
+// * Rounded images.
+// 
+.img--round
+    border-radius: $brand-round
+
+
+//
+// * Image placement variations.
+//
+.img--right
+    float: right
+    margin-bottom: $base-spacing-unit
+    margin-left: $base-spacing-unit
+
+.img--left
+    float: left
+    margin-right: $base-spacing-unit
+    margin-bottom: $base-spacing-unit
+
+.img--center
+    display: block
+    margin-right: auto
+    margin-left: auto
+    margin-bottom: $base-spacing-unit
+
+
+
+
+//
+// * Make Images stands out
+// * NOTE: If you change "border-radius" in different view port,
+// *       you need to reset each border-radius for preferable size.
+// *       Default value is what I defined in default.sass "$brand--round"
+//
+
+.img--holder
+    display: block
+    position: relative
+
+    &:after
+        content: ''
+        display: block
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        +box-shadow(0 1px 3px rgba(0,0,0,.2), inset 0 0 0 .5px rgba(0,0,0,.1), inset 0 0 0 1px rgba(255,255,255,.15))
+        +border-radius($brand-round)
+
+
+//
+// * Images in `figure` elements.
+//
+figure > img
+    display: block
+

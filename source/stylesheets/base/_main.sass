@@ -1,0 +1,38 @@
+//------------------------------------------------------------
+//
+//  $MAIN
+//
+//------------------------------------------------------------
+
+html
+    font-size: 100%
+    -webkit-text-size-adjust: 100%
+    -ms-text-size-adjust: 100%
+
+
+body
+    font-family: $base-font-family
+    font-size: $base-font-size
+    line-height: $line-height-ratio
+    text-rendering: optimizeLegibility
+    -webkit-font-smoothing: antialiased
+    background-color: $white
+    min-height: 100%
+
+    +breakpoint(palm)
+        font-size: 120%
+
+    +breakpoint(lap)
+        font-size: 150%
+
+    +breakpoint(desk)
+        font-size: 160%
+
+a
+    color: $black-lighter
+    text-decoration: underline
+    
+    +transition(color .1s ease-in-out)
+    
+    &:hover
+        color: $brand-color

@@ -1,0 +1,475 @@
+//------------------------------------------------------------
+//
+//  $Profile
+//
+//------------------------------------------------------------
+
+
+
+//
+// * wrap all element with this class.
+//
+
+.book--wrapper
+    width: 100%
+    position: relative
+    display: block
+    
+
+
+
+
+//
+// * set container.
+//
+
+.book--container
+    width: 100%
+    height: 100%
+    overflow: hidden
+    position: relative
+    display: block
+
+
+
+
+
+
+
+//
+// Start book area with books wrapper.
+//
+
+.book--pages
+    display: block
+    position: relative
+
+    width: 90%
+    margin-right: auto
+    margin-left: auto
+
+
+
+    // Move 30% to left when its laptop
+    // This will born a nice sidebar for user profile. Yeah.
+    +breakpoint(lap)
+        position: absolute
+        left: 30%
+        width: 70%
+
+
+
+
+
+
+
+
+
+
+//
+// This is container of bunch of books.
+// Set the width of book holder and align it middle.
+//
+
+.book--pages__container
+    +padding-trailer(1)
+    overflow: hidden
+    @extend .cf
+
+    // Align middle when its bigger than tablet size.
+    +breakpoint(palm)
+        +padding-leader(1)
+        width: 90%
+        max-width: 700px
+        margin-right: auto
+        margin-left: auto
+
+
+    // Remove "padding-top" because you will see 
+    // Download link above of its element.
+    +breakpoint(lap)
+        padding-top: 0
+
+
+
+    
+    //
+    // Make width wider when it's larger than laptop. 
+    //
+
+    +breakpoint(desk)
+        max-width: 1200px
+
+
+
+
+
+
+//
+// Set author area
+//
+
+
+.book--author
+    +padding-leader(1)
+    +padding-trailer(1)
+    border-bottom: $section-bar-primary
+    
+    // show border top for palm & lap size of viewport
+    +breakpoint(palm)
+        font-size: 80%
+        border-top: $section-bar-primary
+    
+
+
+
+
+    
+
+
+//
+// * Author icon
+//
+
+.book--author__icon
+    display: inline-block
+    width: em-font(48px)
+    height: em-font(48px)
+    margin-right: em-font(10px)
+    +border-radius($brand-round)
+    overflow: hidden
+    vertical-align: bottom
+
+
+
+
+
+
+//
+// Display inline the author info area
+//
+
+.book--author__info
+    display: inline-block
+    width: 75%
+
+    overflow: hidden
+    position: relative
+
+    vertical-align: middle // for FF
+
+
+    //
+    // Set a gradient overlay in case there's contributors and its over the div.
+    //
+    &:after
+        content: ''
+        display: block
+        width: em-font(50px)
+        height: em-font(20px)
+        position: absolute
+        bottom: 0
+        right: 0
+        +background(linear-gradient(left, rgba(255,255,255,0) $white))
+
+
+
+//
+// Set author title ("written by") & name
+//
+
+.book--author__title
+    color: $black-lightest
+    display: block
+    +adjust-font-size-to(14px)
+    letter-spacing: em-font(2px)
+
+
+
+
+
+//
+// Book author's name & contributors number
+//
+.book--author__name
+    display: block
+    width: 100%
+
+
+
+
+
+
+//
+// The name of a book owner
+//
+
+.book--author__owner
+    display: inline
+    font-weight: bold
+    color: $black-lighter
+    text-decoration: none
+    letter-spacing: em-font(1px)
+    +adjust-font-size-to(20px)
+    +adjust-leading-to(1.2, 20px)
+
+    // Trancate when it will be 2 line long.
+    // 
+    width: 100%
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+
+    
+
+  
+
+
+//
+// The number of contributors
+//
+
+.book--author__contributors
+    @extend .book--author__owner
+    color: $black-lightest
+
+
+
+
+
+
+
+
+//
+// Get a white space between bar & books
+//
+
+.book--mypages__container
+    position: relative
+    display: block
+    overflow: hidden
+    +leader(1)
+
+
+    img
+        +border-radius($brand-round)
+
+
+
+
+
+
+
+
+//
+// Set the size of books.
+// This must follow silver ratio.
+// Use such service to find out nice ratio generator.
+// http://hiritsu.blogspot.jp/
+// 
+
+$book-page-delta-size         : 47.5%
+$book-page-gamma-size         : 30%
+$profile-book-epsilon-size    : 16%
+$book-page-gutter               : 5%
+
+
+
+.book--page__item
+    position: relative
+    display: block
+    float: left
+    
+    width: $book-page-delta-size
+    margin-right: $book-page-gutter
+    +trailer(1)
+
+    // remove "margin-right" for each 2nd element in a row
+    &:nth-child(2n+2)
+        margin-right: 0
+
+
+    +breakpoint(palm)
+
+        width: $book-page-gamma-size
+
+        &:nth-child(2n+2)
+            margin-right: $book-page-gutter
+
+        // remove "margin-right" for each 3rd element in a row
+        &:nth-child(3n+3)
+            margin-right: 0
+
+
+
+
+
+
+//
+// Adjust for the desktop size viewport
+// 
+//
+      
++breakpoint(desk)
+    .book--page__item
+        // display 5 books in a row
+        width: $profile-book-epsilon-size
+
+
+        // add "margin-right" for each 3rd book element in a row
+        // Because you removed for the viewport size of laptop
+        &:nth-child(3n+3)
+            margin-right: 5%
+
+        // remove "margin-right" for each 5th book element in a row
+        &:nth-child(5n+5)
+            margin-right: 0
+           
+
+
+
+
+
+//
+// Make the image's border rounded
+//
+
+.book--page__image
+    display: block
+    overflow: hidden
+    +border-radius($brand-round)
+
+
+
+
+
+
+//
+// Set the detail of the page
+//
+
+.book--page__detail
+    position: relative
+    display: block
+    text-align: center
+    text-decoration: none
+    +adjust-font-size-to(14px)
+
+    font-weight: bold
+    color: $black-lightest
+
+
+.book--page__title
+    display: block
+    text-decoration: none
+    color: $black-lightest
+    +leader(.5)
+
+    // Trancate when it will be 2 line long.
+    width: 100%
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+
+
+    // I don't want to change title color,
+    // so I set this to prohibit any changes.
+    &:hover
+        color: $black-lightest
+
+
+
+.book--page__num
+    
+    // Add underline for the number
+    text-decoration: underline
+
+    // add separator for making tweaks of visibility
+    border-bottom: $section-bar-primary
+    border-bottom-style: dotted
+    
+    // Add white space for the bottom of separator
+    +padding-trailer(1)
+
+    // Add transition effect for hover over animation
+    +transition(all .2s $easeInOutQuad)
+
+
+//
+// Hover effect of title & separator
+// Change it solid border from dotted style &
+// title for brand-color.
+//
+
+
+.book--page__item:hover
+
+    // border & color. Dotted to solid, darkgray to brand-color 
+    .book--page__num
+        border-bottom-color: $brand-color
+        border-bottom-style: solid
+        color: $brand-color
+
+
+
+
+
+
+        
+
+// +breakpoint(lap)
+//     .profile--book
+//         // display 5 books in a row
+//         width: $profile-book-epsilon-size
+
+
+//         // add "margin-right" for each 3rd book element in a row
+//         &:nth-child(3n+3)
+//             margin-right: 5%
+
+//         // remove "margin-right" for each 5th book element in a row
+//         &:nth-child(5n+5)
+//             margin-right: 0
+           
+
+
+
+
+
+//
+// Display "Read More" button, when its never ending book.
+//
+
+.book--pages__read-more
+    display: block
+    width: 100%
+    position: relative
+    text-align: center
+    color: $black-lightest
+    letter-spacing: 2px
+    font-weight: bold
+
+    +trailer(1)
+    +leader(1)
+    +padding-leader(1)
+    +padding-trailer(1)
+
+    // Add border
+    border-top: $section-bar-primary
+    border-bottom: $section-bar-primary
+
+    // Separate from ".book--mypages__container"
+    overflow: hidden
+
+    // It's clickable so change the mouse to pointer
+    cursor: pointer
+
+    // Add transition effect for hover aciton
+    +transition(all .2s $easeInOutQuad)
+
+    &:hover
+        border-top-color: $black-lightest
+        border-bottom-color: $black-lightest
+        color: $black-lighter
+
+

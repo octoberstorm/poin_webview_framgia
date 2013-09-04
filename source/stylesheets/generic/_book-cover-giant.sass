@@ -1,0 +1,415 @@
+//------------------------------------------------------------
+//
+//  $BOOK-COVER-GIANT
+//
+//------------------------------------------------------------
+
+//
+// * ".book" is a quick and simple way to apply designed book layout.
+//
+
+
+
+
+
+
+
+
+
+//
+// The base design of book-cover.
+// It will be header when you are mobile or tablet,
+// so you must set "book-cover" with "header" element for
+// semantic markup.
+// 
+// NOTE:
+//        # Header ver. 
+//            - mobile
+//            - tablet
+//        # Sidebar ver.
+//            - laptop
+//
+
+
+
+//
+// Set "book-cover" with header element
+//
+
+.book-cover-giant__header
+    position: relative
+    display: block
+    background-color: $black
+    height: 100%
+    overflow: hidden
+
+    +breakpoint(lap)
+        position: fixed
+        width: 30%
+        height: 100%
+        top: 0
+        left: 0
+        overflow: hidden
+        max-width: 600px
+        border-right: $border-profile-lap
+
+        //
+        // To resolve fixed positioning with animated elements
+        // on the same page.
+        //
+        // Find out more in:
+        // http://stackoverflow.com/questions/11563612/css3-animations-breaking-fixed-positioning-when-page-scrolled
+        //
+        -webkit-transform: translate3d(0, 0, 0)
+        transform        : translate3d(0, 0, 0)
+
+
+//
+// Wrap up the book cover.
+//
+
+.book-cover-giant__wrapper
+    width: 100%
+    height: 100%
+
+
+
+
+
+
+
+
+
+
+//
+// * Set the background image of the book cover.
+//
+// * NOTE: - You should apply the code below to your haml.
+//           {:style => "background-image: url(../images/foo.jpg);"} 
+//
+//         - If you want to add lazyload the code must like this
+//           with a class ".js-bg-load"
+//           {"data-bg" => "../images/big_sake_001.jpeg"}
+//
+
+.book-cover-giant__bg
+
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+
+    // Show background image
+    background-position: center
+    -webkit-background-size: cover
+    -moz-background-size: cover
+    -o-background-size: cover
+    background-size: cover
+
+
+//
+// * Beautiful user profile area will starts from here.
+// * It must follow silver ratio both width & height.
+//
+
+.book-cover-giant__container
+    position: relative
+    width: 100%
+    height: 100%
+    +padding-leader(1)
+
+
+
+    //
+    // Align middle to the inside of elements in 
+    // ".book-cover-giant__container" when your viewport is palm or bigger.
+    //
+
+    +breakpoint(palm)
+        width: 90%
+        margin-left: auto
+        margin-right: auto
+        max-width: 700px
+
+
+
+
+
+
+
+
+
+
+
+//
+// Add a new layer under user's element in order to show words clear.
+//
+
+
+.book-cover-giant__overlay
+    display: block
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
+    background: rgba(0,0,0,.3)
+
+    +breakpoint(lap)
+        background: rgba(0,0,0,.15)
+
+        
+        &:before // Square gutter
+            content: ''
+            display: block
+            position: absolute
+            top: 5%
+            left: 5%
+            right: 5%
+            bottom: 5%
+            width: 90%
+            height: 90%
+            border: 1px solid rgba(255,255,255, .3)
+            +border-radius($brand-round +2px)
+
+
+
+
+
+
+
+
+
+
+
+//
+// Treat username & description nicer
+//
+
+.book-cover-giant__info
+    text-align: center
+    color: $white-onphoto
+    text-shadow: $text-shadow-onphoto
+
+
+//
+// User name & description
+//
+
+.book-cover-giant__title
+    position: relative
+    z-index: 10
+
+    +breakpoint(lap)
+        +adjust-font-size-to(26px)
+        margin-top: 20%
+        padding: 0 1em
+
+    &:after // under accent border
+        content: ''
+        position: relative
+        display: block
+        margin: em-font(10px) auto 0
+        width: em-font(30px)
+        height: em-font(1px)
+        background-color: $white-onphoto
+
+        +breakpoint(lap)
+            +leader(.5)
+
+
+
+
+
+//
+// Adjust "book-cover-giant__title" for the desk viewport
+//
+
++breakpoint(desk)
+    .book-cover-giant__title
+        +leader(2)       
+
+        &:after // under accent border
+            +leader(1)
+            +trailer(1)
+
+
+
+
+
+
+
+//
+// Book Cover description
+//
+
+.book-cover-giant__description
+    padding: 0 1em
+    position: relative
+    z-index: 10
+    +padding-leader(1)
+    @extend %georgia
+
+    +breakpoint(lap)
+        max-height: em-font(100px)
+        overflow: hidden
+        +opacity(0)
+        +transition(opacity .3s ease)
+        font-size: 80%
+
+
+    +breakpoint(desk)
+        font-size: 100%
+        max-height: 1000px
+
+
+
+
+//
+// Display book description when you hover over on it
+//
+.book-cover-giant__header:hover .book-cover-giant__description
+    +opacity(1)
+
+
+
+
+
+
+
+
+
+
+//
+// Start beautiful stats.
+//
+
+
+.book--stats
+
+    // display stats at the bottom of user info
+    width: 100%
+    +leader(1)
+    color: $white-onphoto
+    text-shadow: $text-shadow-onphoto
+    font-weight: lighter
+    @extend .cf
+
+
+    +breakpoint(lap)
+        position: absolute
+        bottom: em-font(10px)
+        left: 5%
+        right: 10px
+        bottom: 4%
+
+        font-size: 80%
+
+    +breakpoint(desk)
+        font-size: 100%
+
+
+
+
+
+//
+// Display each stats in row
+//
+
+.book--stats--pages,
+.book--stats--following,
+.book--stats--followers
+    width: 33.333%
+    position: relative
+    display: block
+    float: left
+    text-align: center
+
+
+    //
+    // Display in vertical when you are on laptop.
+    //
+    +breakpoint(lap)
+        width: 100%
+        text-align: left
+        font-size: 160%
+
+
+
+
+//
+// Add nice separator between each stats.
+//
+
+.book--stats--pages:after,
+.book--stats--following:after
+    content: ''
+    display: block
+    position: absolute
+    right: 0
+    top: 0
+    width: 1px
+    height: 100%
+    +background(linear-gradient(rgba(255,255,255,.001), rgba(255,255,255,.2), rgba(255,255,255,.001)))
+
+
+
+    //
+    // Hide when its in vertical.
+    //
+    +breakpoint(lap)
+        display: none
+
+
+
+
+
+
+//
+// Make the numbers larger. We are always happy with large numbers. 
+//
+
+.book--stats--pages__num,
+.book--stats--following__num,
+.book--stats--followers__num
+    @extend %helveticaneue-light
+    +adjust-font-size-to(18px)
+    display: block
+
+
+
+//
+// Make titles smaller to shine large numbers. 
+//
+
+.book--stats--pages__title,
+.book--stats--following__title,
+.book--stats--followers__title
+
+    +adjust-font-size-to(10px)
+    letter-spacing: 1px
+    display: block
+    margin-bottom: 5%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

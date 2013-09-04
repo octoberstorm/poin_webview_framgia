@@ -1,0 +1,765 @@
+//------------------------------------------------------------
+//
+//  $Profile
+//
+//------------------------------------------------------------
+
+
+
+//
+// * Same layout with ".site-width" but width is 100% when its mobile.
+//
+
+.profile--wrapper
+    width: 100%
+    position: relative
+    display: block
+    
+
+.profile--container
+    width: 100%
+    height: 100%
+
+
+//
+// Header of users info.
+//
+
+// set a wrapper
+.profile--user__header
+    position: relative
+    display: block
+    background-color: $black
+    height: 100%
+    overflow: hidden
+
+    +breakpoint(lap)
+        position: fixed
+        width: 30%
+        height: 100%
+        top: 0
+        left: 0
+        overflow: hidden
+        max-width: 600px
+        border-right: $border-profile-lap
+
+        //
+        // To resolve fixed positioning with animated elements
+        // on the same page.
+        // Find out more in:
+        // http://stackoverflow.com/questions/11563612/css3-animations-breaking-fixed-positioning-when-page-scrolled
+        //
+        -webkit-transform: translate3d(0, 0, 0)
+        transform        : translate3d(0, 0, 0)
+
+
+//
+// add book cover image for this class
+//
+
+.profile--user__wrapper
+    width: 100%
+    height: 100%
+
+
+.profile--user__bg
+
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+
+    // Show background image
+    background-position: center
+    -webkit-background-size: cover
+    -moz-background-size: cover
+    -o-background-size: cover
+    background-size: cover
+
+
+
+    // Add blur effect.
+    // Because profile header image is tend to smaller than
+    // you expected to display as sie bar background.
+    // So blur it to fit as accent of the profile page.
+    // Note: you need to scale up a bit in order to hide 
+    //       blurly edge of its background.
+
+    +breakpoint(lap)
+        +filter(blur(6px))
+        +scale(1.1)
+        filter: url(filter.svg#blur)     /* FF, IE10 & Opera */
+
+
+
+
+
+
+
+//
+// * Beautiful user profile area will starts from here.
+// * It must follow silver ratio both width & height.
+//
+
+
+
+
+//
+// Transition from header to sidebar.
+// Provide slic profile for poin user.
+// 
+// * NOTE: "$silver-ratio" will appear once again in
+//         ^ .profile--book
+//
+
+$silver-ratio                 : 141.42%
+$profile-container-width      : em-font(224px)
+$profile-container-height     : em-font(316px)
+$profile-inner-border-gap     : em-font(5px)
+
+
+
+// then transition starts form here.
+.profile--user__container
+    position: relative
+    width: 100%
+    +padding-leader(1)
+
+
+    //
+    // Align ".profile--mybooks__container" middle 
+    // when its bigger than palm.
+    //
+
+    +breakpoint(palm)
+        width: 90%
+        margin-left: auto
+        margin-right: auto
+        max-width: 700px
+
+
+
+
+
+
+    //
+    // Add variables set above 
+    //
+
+    +breakpoint(lap)
+        width: $profile-container-width
+        height: $profile-container-height
+        top: 50%
+        margin-top: - $profile-container-height / 2
+        margin-left: auto
+        margin-right: auto
+        padding: 40px 40px 0
+        overflow: hidden
+        background-color: $white
+
+
+
+        //
+        // Make it transparent before nprogress ends.
+        // Note: You can find out on "l_profile.haml" 
+        //       when it fired to display.
+        //
+
+        +opacity(0)
+
+
+
+
+
+
+        //
+        // Magic will happen with this spell
+        // This will keep silver ratio whatever window changed its width.
+        // http://stackoverflow.com/questions/12121090/responsively-change-div-size-keeping-aspect-ratio
+        //
+
+     
+
+        &:after
+            content: ''
+            padding-top: $silver-ratio
+            display: block
+        
+
+        //
+        // Add nice accent for profile container
+        // This will add border inside of user profile container
+        // 
+        &:before
+            content: ''
+            display: block
+            position: absolute
+            
+            border: 1px solid $black-lightest
+            top: $profile-inner-border-gap
+            left: $profile-inner-border-gap
+            width: $profile-container-width - $profile-inner-border-gap*2
+            height: $profile-container-height - $profile-inner-border-gap*2
+
+
+
+
+
+
+
+//
+// Make it animate ".profile--user__container"
+// when its larger than laptop
+//
+
+
+// Set keyframes
++keyframes(slideInRight)
+    0%
+        +opacity(0)
+        +translateX(-100px)
+
+    100%
+        +opacity(1)
+        +translateX(0)
+
+
+
+.profile--user__slidein
+    
+    // Make it animate when its laptop
+    +breakpoint(lap)
+        +animate(slideInRight, .5s, 1.3s, $easeInOutQuad, both)
+    
+
+
+
+
+
+
+
+
+
+//
+// Add a new layer under user's element in order to show words clear.
+//
+
+
+.profile--user__overlay
+    display: block
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
+    background: rgba(0,0,0,.3)
+
+    +breakpoint(lap)
+        background: rgba(0,0,0,.15)
+
+
+
+
+
+
+
+
+
+
+//
+// Set user avator image
+//
+
+$profile-user-icon-size: em-font(73px)
+
+.profile--user__image
+    width: $profile-user-icon-size
+    height: $profile-user-icon-size
+    +border-radius($brand-round)
+    overflow: hidden
+    +box-shadow(0 0 0 3px #fff)
+
+    margin-left: auto
+    margin-right: auto
+    +trailer(1)
+    position: relative
+    z-index: 10
+
+
+    +breakpoint(lap)
+        +box-shadow(none)
+        border: 1px solid rgba(0,0,0,.1)
+
+
+
+
+
+
+//
+// Treat username & description nicer
+//
+
+.profile--user__info
+    text-align: center
+    color: $white-onphoto
+    text-shadow: $text-shadow-onphoto
+
+    +breakpoint(lap)
+        text-shadow: none
+        color: $black-lighter
+        font-size: 100%
+
+
+//
+// User name & description
+//
+
+.profile--user__name
+    position: relative
+    z-index: 10
+
+    +breakpoint(lap)
+        +adjust-font-size-to(23px)
+        +adjust-leading-to(1, 23px)
+
+
+.profile--user__description
+    padding: 0 2em
+    position: relative
+    z-index: 10
+    @extend %georgia
+    font-weight: 300
+
+    +breakpoint(lap)
+        +adjust-font-size-to(12px)
+        padding: 0
+        padding-top: em-font(10px)
+        max-height: 150px
+        overflow: hidden
+
+        &:after
+            display: block
+            content: ''
+            width: 100%
+            height: 30px
+            position: absolute
+            bottom: 0
+            left: 0
+            right: 0
+            +background(linear-gradient(top, rgba(255,255,255,0) $white))
+
+
+
+
+//
+// Start beautiful stats.
+//
+
+
+.profile--stats
+
+    // display stats at the bottom of user info
+    width: 100%
+    +leader(1)
+    color: $white-onphoto
+    text-shadow: $text-shadow-onphoto
+    font-weight: lighter
+    @extend .cf
+
+
+    +breakpoint(lap)
+
+
+
+        position: absolute
+        bottom: em-font(10px)
+        left: $profile-inner-border-gap 
+        right: $profile-inner-border-gap 
+        width: $profile-container-width - $profile-inner-border-gap*2
+        color: $black-lightest
+        text-shadow: none
+
+
+
+//
+// Display each stats in row
+//
+
+.profile--stats--pages,
+.profile--stats--following,
+.profile--stats--followers
+    width: 33.333%
+    position: relative
+    display: block
+    float: left
+    text-align: center
+
+
+
+
+
+
+//
+// Add nice separator between each stats.
+//
+
+.profile--stats--pages:after,
+.profile--stats--following:after
+    content: ''
+    display: block
+    position: absolute
+    right: 0
+    top: 0
+    width: 1px
+    height: 100%
+    +background(linear-gradient(rgba(255,255,255,.001), rgba(255,255,255,.2), rgba(255,255,255,.001)))
+
+
+
+    // Remove separators when its laptop
+    +breakpoint(lap)
+        display: none
+
+
+
+
+
+
+//
+// Make the numbers larger. We are always happy with large numbers. 
+//
+
+.profile--stats--pages__num,
+.profile--stats--following__num,
+.profile--stats--followers__num
+    @extend %helveticaneue-light
+    +adjust-font-size-to(18px)
+    display: block
+
+
+
+
+
+//
+// Make titles smaller to shine large numbers. 
+//
+
+.profile--stats--pages__title,
+.profile--stats--following__title,
+.profile--stats--followers__title
+
+    +adjust-font-size-to(10px)
+    letter-spacing: 1px
+    display: block
+    margin-bottom: 5%
+
+
+
+
+
+
+
+//
+// Start book area with books wrapper.
+//
+
+.profile--books
+    display: block
+    position: relative
+
+    width: 90%
+    margin-right: auto
+    margin-left: auto
+
+
+
+    // Move 30% to left when its laptop
+    // This will born a nice sidebar for user profile. Yeah.
+    +breakpoint(lap)
+        position: absolute
+        left: 30%
+        width: 70%
+
+
+
+
+
+
+
+
+
+
+//
+// This is container of bunch of books.
+// Set the width of book holder and align it middle.
+//
+
+.profile--books__container
+    +padding-trailer(1)
+    overflow: hidden
+    @extend .cf
+
+    // Align middle when its bigger than tablet size.
+    +breakpoint(palm)
+        +padding-leader(1)
+        width: 90%
+        max-width: 700px
+        margin-right: auto
+        margin-left: auto
+
+
+    // Remove "padding-top" because you will see 
+    // Download link above of its element.
+    +breakpoint(lap)
+        padding-top: 0
+
+
+
+    
+    //
+    // Make width wider when it's larger size of image. 
+    //
+
+    +breakpoint(desk)
+        max-width: 1200px
+
+
+
+//
+// Section bar for separate my books & subscribings
+//
+
+.profile--bar
+    position: relative
+    display: block
+    width: 100%
+    border-bottom: $section-bar-primary
+    border-top: $section-bar-primary
+    +leader(1)
+
+    // To clear floating this section bar
+    overflow: hidden
+
+    // To override subheader's border
+    z-index: 1
+
+
+    // Remove "margin-top" when it's laptop because
+    // you will see "download link" above of its element.
+    +breakpoint(lap)
+        margin-top: 0
+
+
+
+
+
+
+
+
+//
+// Section bar header font settings
+//
+
+
+.profile--bar__heading
+    +adjust-font-size-to(18px)
+    line-height: em-base(50px, 18px)
+    color: $black-lighter
+    letter-spacing: 1px
+
+
+
+
+
+
+
+
+
+
+//
+// Books holder
+// He is actually holding them. 
+//
+
+.profile--mybooks__container
+    position: relative
+    display: block
+    overflow: hidden
+    +leader(1)
+    @extend .cf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Show total pages.
+// See more details about book-item
+// go to "_book-item.sass" file.
+//
+
+.book--item__total-pages
+    position: absolute
+    +adjust-font-size-to(12px)
+    bottom: em-font(-50px)
+    font-weight: normal
+    left: 0
+    width: 100%
+    color: $black-lightest
+    padding-bottom: 1em
+    display: block
+    font-weight: bold
+    border-bottom: 1px dotted rgba(0,0,0,.1)
+
+
+    // Add transition for a hover effect when it's bigger than tablet.
+    +breakpoint(palm)
+        +transition(all .2s $easeInOutQuad)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Change a border & text color when its hover over on a book.
+//
+
+.book--item:hover .book--item__total-pages
+    
+    +breakpoint(palm)
+        color: $brand-color
+        border-bottom: 1px solid $brand-color
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Wrap subscribing books area
+//
+
+
+.profile--subscribing__container
+    @extend .profile--books__container
+
+
+
+
+
+//
+// Subscribing book author's icon & name
+//
+
+
+.profile--subscribing
+    display: block
+    position: relative
+    text-align: left
+    margin-top: -1px
+
+    +trailer(1)
+    +padding-leader(0.5)
+    +padding-trailer(0.5)
+    border-bottom: $section-bar-second
+    border-top: $section-bar-second
+    
+//
+// Subscribing book author's icon size
+//
+
+
+$profile-subscribing-icon-size:     em-font(24px)
+
+.profile--subscribing__icon
+    width: $profile-subscribing-icon-size
+    height: $profile-subscribing-icon-size
+    overflow: hidden
+    +border-radius($brand-round)
+    display: inline-block
+    margin-right: em-font(10px)
+    vertical-align: bottom
+    
+
+
+
+//
+// Subscribing book author's name
+//
+
+.profile--subscribing__title
+    +adjust-font-size-to(14px)
+    display: inline-block
+    
+    a
+        color: $black-lightest
+        text-decoration: none
+
+        &:hover
+            color: $brand-color
+
+
+
+
+
+//
+// set wrapper for containing elements
+//
+
+
+.profile--subscribing--books__container
+    @extend .cf
+    overflow: hidden
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+

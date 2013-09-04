@@ -1,0 +1,119 @@
+//------------------------------------------------------------
+//
+//  $share
+//
+//------------------------------------------------------------
+
+
+//
+// Share button design and small layouts
+//
+
+
+
+
+//
+// Social (Twitter / Facebook)
+// NOTE: Display none for mobile
+//       because its pain in the ass to share items from button
+//       without authorizing social account for their browser. 
+//
+
+.share--social
+    display: none
+
+    +breakpoint(palm)
+
+        display: block
+        position: relative
+        overflow: hidden
+        text-align: right
+
+        +padding-trailer(1)
+        +padding-leader(1)
+
+        border-bottom: $section-bar-second
+
+
+        // To stop blinking other elements when hover over its element.
+        // Hate that blink... Aww buggy...
+        -webkit-backface-visibility: hidden
+        -webkit-transform-style: preserve-3d
+
+
+
+
+//
+// Social Button
+//
+.button--social__facebook, .button--social__twitter
+    font-weight: bold
+    font-size: 60%
+    +transition(all 0.2s $easeInOutQuad)
+
+    
+.button--social__facebook
+    background-color: $social-color-facebook
+
+    &:hover
+        background-color: $social-color-facebook
+
+
+.button--social__twitter
+    background-color: $social-color-twitter
+
+    &:hover
+        background-color: $social-color-twitter
+
+
+
+
+
+
+
+.share--facebook, .share--twitter
+    display: inline-block
+    margin-right: em-font(10px)
+    +opacity(0.4)
+    +transition(0.2s opacity $easeInOutQuad)
+
+    &:hover
+        +opacity(1)
+
+    // adjust webfonts position
+    i.ss-icon
+        +adjust-font-size-to(18px)
+        margin-right: em-font(5px, 18px)
+        vertical-align: middle
+
+    .button--social__facebook, .button--social__twitter
+        margin-right: em-font(10px, 12px)
+
+
+    // count arrow box
+    .share--count
+        position: relative
+        border: 1px solid rgba(0,0,0,.1)
+        background-color: #FFF
+        +border-radius(4px)
+        font-size: 12px
+        padding: 8px 12px
+        z-index: 1
+
+        &:before
+            +arrow(7px, 15px, left, #ffffff)
+            content: ''
+            left: -7px
+            top: 7px
+            position: absolute
+            z-index: 10
+
+        &:after
+            +arrow(8px, 15px, left, rgba(0,0,0,.1))
+            content: ''
+            left: -8px
+            top: 7px
+            position: absolute
+            z-index: 9
+
+

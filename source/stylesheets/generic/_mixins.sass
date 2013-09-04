@@ -1,0 +1,348 @@
+@import default
+
+//============================================================
+//
+// $MIXINS
+//
+//============================================================
+
+
+//
+// Break Points for RWD
+// see more details
+// http://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+// http://css-tricks.com/media-queries-sass-3-2-and-codekit/
+//
+
+=breakpoint($point)
+    @if $point == palm
+        @media (min-width: $palm)
+            @content
+
+    @if $point == lap
+        @media (min-width: $lap)
+            @content
+
+    @else if $point == desk
+        @media (min-width: $desk)
+            @content
+
+//============================================================
+//
+// Arrow.
+//
+// @param width           :  px, em
+// @param height          :  px, em
+// @param direction       :  up, down, left, right
+// @param color           :  hex, rgb
+//
+// :usage
+// +arrow(40px, 30px, down, #e88565)
+//
+//
+//============================================================
+
+=arrow($width: 20px, $height: 20px, $direction: up, $color: red)
+
+    width: 0
+    height: 0
+
+    // Right
+    @if $direction == right
+        border-top: $height/2 solid transparent
+        border-bottom: $height/2 solid transparent
+        border-left: $width solid $color
+
+    // Left
+    @if $direction == left
+        border-top: $height/2 solid transparent
+        border-bottom: $height/2 solid transparent
+        border-right: $width solid $color
+
+    // Up
+    @if $direction == up
+        border-left: $width/2 solid transparent
+        border-right: $width/2 solid transparent
+        border-bottom: $height solid $color
+
+    // Down
+    @if $direction == down
+        border-left: $width/2 solid transparent
+        border-right: $width/2 solid transparent
+        border-top: $height solid $color
+
+//============================================================
+//
+// Absolute middle
+//
+//============================================================
+
+=absolute-middle($width, $height)
+    position: absolute
+    left: 50%
+    top: 50%
+    height: $height
+    width: $width
+    margin-left: - $width / 2
+    margin-top: - $height / 2
+
+
+//============================================================
+//
+// List styles
+//
+//============================================================
+
+
+=unordered
+    list-style-position: outside
+    list-style-type: disc
+
+=unordered-inside
+    list-style-position: inside
+    list-style-type: disc
+
+=ordered
+    list-style-position: outside
+    list-style-type: decimal
+
+=ordered-inside
+    list-style-position: inside
+    list-style-type: decimal
+
+=nobullet
+    list-style-type: none
+
+
+//============================================================
+//
+// Center Block
+//
+//============================================================
+
+=center-block
+    display: block
+    margin-left: auto
+    margin-right: auto
+
+
+
+//============================================================
+//
+// Box Sizing
+//
+//============================================================
+
+=box-sizing($box-model)
+    -webkit-box-sizing: $box-model // Safari <= 5
+    -moz-box-sizing: $box-model // Firefox <= 19
+    box-sizing: $box-model
+
+
+
+//============================================================
+//
+// User Select
+//
+//============================================================
+
+
+=userselect($state)
+    user-select         : $state
+    -webkit-user-select : $state
+    -moz-user-select    : $state
+    -o-user-select      : $state
+    -ms-user-select     : $state
+
+
+//============================================================
+//
+// Clearfix
+//
+//============================================================
+
+=clearfix
+    zoom: 1
+    &:before, &:after
+        content: ""
+        display: table
+
+    &:after
+        clear: both
+
+
+//============================================================
+//
+// Keyframes
+//
+// use of keyframes mixin
+// +keyframes(bgcolor)
+//   0%
+//     background-color: #ffccf2
+//   50%
+//     background-color: #ccffcc
+//   100%
+//     background-color: #ccffff
+//
+//============================================================
+
+=keyframes($name)
+    @-webkit-keyframes #{$name}
+        @content
+    @-moz-keyframes #{$name}
+        @content
+    @-ms-keyframes #{$name}
+        @content
+    @-o-keyframes #{$name}
+        @content
+    @keyframes #{$name}
+        @content
+
+
+
+//============================================================
+//
+// Animation
+//
+//============================================================
+
+=animate($name: fadeIn, $duration: 1s, $delay: .2s, $function: ease, $mode: both)
+    +experimental(animation, $name $duration $delay $function $mode)
+
+//============================================================
+//
+// Retina images.
+//
+// Use with care - http://37signals.com/svn/posts/3271-easy-retina-ready-images-using-scss
+//============================================================
+
+=image-2x($image, $width, $height)
+    @media (min--moz-device-pixel-ratio: 1.3),(-o-min-device-pixel-ratio: 2.6/2),(-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx)
+        /* on retina, use image that's scaled by 2 */
+        background-image: url($image)
+        background-size: $width $height
+
+
+
+//============================================================
+//
+// Transitions.
+//
+//============================================================
+
+// Set-up custom transitions
+
+=color_transition
+    @include transition-property(color)
+    @include transition-duration(0.3s)
+    @include transition-timing-function(ease-in-out)
+
+//============================================================
+//
+// HEX to RGB.
+// http://codepen.io/sturobson/pen/hdKyv
+//
+//============================================================
+
+=rgba($color, $value)
+    background-color: $color
+    background-color: rgba($color, $value)
+
+
+//============================================================
+//
+// easing
+//
+// Thanks to Robert Penner for his sterling work on easing,
+// and to Matthew Lein for converting these functions into
+// approximated cubic-bezier functions. Respect.
+//
+// @see http://robertpenner.com/
+// @see http://matthewlein.com/ceaser/
+//
+//============================================================
+
+// Cubic
+$easeInCubic    : cubic-bezier(0.550, 0.055, 0.675, 0.190)
+$easeOutCubic   : cubic-bezier(0.215, 0.610, 0.355, 1.000)
+$easeInOutCubic : cubic-bezier(0.645, 0.045, 0.355, 1.000)
+
+// Circ
+$easeInCirc     : cubic-bezier(0.600, 0.040, 0.980, 0.335)
+$easeOutCirc    : cubic-bezier(0.075, 0.820, 0.165, 1.000)
+$easeInOutCirc  : cubic-bezier(0.785, 0.135, 0.150, 0.860)
+
+// Expo
+$easeInExpo     : cubic-bezier(0.950, 0.050, 0.795, 0.035)
+$easeOutExpo    : cubic-bezier(0.190, 1.000, 0.220, 1.000)
+$easeInOutExpo  : cubic-bezier(1.000, 0.000, 0.000, 1.000)
+
+// Quad
+$easeInQuad     : cubic-bezier(0.550, 0.085, 0.680, 0.530)
+$easeOutQuad    : cubic-bezier(0.250, 0.460, 0.450, 0.940)
+$easeInOutQuad  : cubic-bezier(0.455, 0.030, 0.515, 0.955)
+
+// Quart
+$easeInQuart    : cubic-bezier(0.895, 0.030, 0.685, 0.220)
+$easeOutQuart   : cubic-bezier(0.165, 0.840, 0.440, 1.000)
+$easeInOutQuart : cubic-bezier(0.770, 0.000, 0.175, 1.000)
+
+// Quint
+$easeInQuint    : cubic-bezier(0.755, 0.050, 0.855, 0.060)
+$easeOutQuint   : cubic-bezier(0.230, 1.000, 0.320, 1.000)
+$easeInOutQuint : cubic-bezier(0.860, 0.000, 0.070, 1.000)
+
+// Sine
+$easeInSine     : cubic-bezier(0.470, 0.000, 0.745, 0.715)
+$easeOutSine    : cubic-bezier(0.390, 0.575, 0.565, 1.000)
+$easeInOutSine  : cubic-bezier(0.445, 0.050, 0.550, 0.950)
+
+// Back
+$easeInBack     : cubic-bezier(0.600, -0.280, 0.735, 0.045)
+$easeOutBack    : cubic-bezier(0.175,  0.885, 0.320, 1.275)
+$easeInOutBack  : cubic-bezier(0.680, -0.550, 0.265, 1.550)
+
+
+
+
+//============================================================
+//
+// Functions for px to em conversions.
+// Find out more on http://sass.fffunction.co/
+//
+//============================================================
+
+
+@function emify($target, $context)
+    @if $target == 0
+        @return 0
+    @return $target / $context + 0em
+
+
+//============================================================
+//
+// Make px to ems using base-font-size
+// echo as: font-size: em-font(#px)
+//
+//============================================================
+
+
+@function em-font($target, $context: $base-font-size)
+    @return emify($target, $context)
+
+
+//============================================================
+//
+// Make px to ems using base-line-height
+// echo as: font-size: em-base(#px)
+//
+//============================================================
+
+@function em-base($target, $context: $base-line-height)
+    @return emify($target, $context)
+
+
+
+
+
+

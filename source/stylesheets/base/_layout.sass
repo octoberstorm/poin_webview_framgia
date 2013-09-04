@@ -1,0 +1,34 @@
+
+//------------------------------------------------------------
+//
+//  $LAYOUT
+//
+//------------------------------------------------------------
+//
+// Layout is the base layout for Poin structure, such as wrapper, 
+// container, and outers.
+//
+
+.outer
+    position: relative
+    width: 100%
+    height: 100%
+
+.inner-wrap
+    height: 100%
+
+.site-width
+    width: 90%
+    margin-right: auto
+    margin-left: auto
+    max-width: 1000px
+    @extend .cf
+
+.inner-width
+    width: 100%
+
+    +breakpoint(palm)
+        width: 80%
+        margin-right: auto
+        margin-left: auto
+

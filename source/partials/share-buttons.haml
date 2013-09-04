@@ -1,0 +1,14 @@
+
+.share--social
+    .js-share--facebook.share--facebook
+        %a.button.button--social__facebook.button__small{:href => "javascript: window.open('https://www.facebook.com/sharer/sharer.php?u=http://poin.co/','share','width=500,height=400') ; void(0) ;"}
+            %i.ss-icon facebook
+            Share
+        %span.share--count.js-share--count
+    .js-share--twitter.share--twitter
+        %a.button.button--social__twitter.button--small{:href => "https://twitter.com/intent/tweet?text=Poin+-+Follow+your+interests.+%40poinapp%20http://poin.co"}
+            %i.ss-icon twitter
+            Tweet
+        %span.share--count.js-share--count
+        :javascript
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');

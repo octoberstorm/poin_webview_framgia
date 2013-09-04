@@ -1,0 +1,238 @@
+//------------------------------------------------------------
+//
+//  $DEFAULT
+//
+//------------------------------------------------------------
+
+
+
+
+
+
+//------------------------------------------------------------
+//
+//  $BASE
+//
+//------------------------------------------------------------
+//
+// * Base stuff
+//
+
+$base-font-size:    16px
+$base-line-height:  22px
+
+//
+// * Base font family
+//
+$base-font-family:  "Helvetica Neue", 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック'
+
+
+
+
+
+//------------------------------------------------------------
+//
+//  $RESPONSIVE
+//
+//------------------------------------------------------------
+//
+// * Care about content, not breakpoints.
+// * It's defined in mixins.sass
+//
+
+$palm:              31.250em   // 500px
+$lap:               75.00em    // 1200px
+$desk:              118.750em  // 1900px
+
+
+
+//------------------------------------------------------------
+//
+//  $FONT-SIZE
+//
+//------------------------------------------------------------
+//
+// * Font-sizes
+//
+
+$giga-size:         96px
+$mega-size:         72px
+$kilo-size:         48px
+
+$h1-size:           50px   // .alpha
+$h2-size:           40px   // .beta
+$h3-size:           30px   // .gamma
+$h4-size:           20px   // .delta
+$h5-size:           16px   // .epsilon
+$h6-size:           14px   // .zeta
+$milli-size:        12px
+$micro-size:        10px
+
+
+
+
+//============================================================
+//
+//  Delicious fruits from Poin farm.
+//
+//============================================================
+
+// Mellow peachs
+
+$peach                                  : #f57b6d
+$peach-lighter                          : #f6887c
+$peach-lightest                         : #f8a399
+
+// Healthy warter
+
+$water                                  : #2eb5e6
+$water-lighter                          : #43bde9
+$water-lightest                         : #6dcbee
+
+// Sour limes
+
+$lime                                   : #62d789
+$lime-lighter                           : #72db95
+$lime-lightest                          : #91e3ad
+
+// Sweet oranges
+
+$orange                                 : #f09847
+$orange-lighter                         : #f2a35a
+$orange-lightest                        : #f5b77f
+
+
+// classes
+.bg-water
+    background-color                     : $water
+.bg-water__lightest
+    background-color                     : $water-lightest
+.bg-lime
+    background-color                     : $lime
+.bg-lime__lightest
+    background-color                     : $lime-lightest
+.bg-orange
+    background-color                     : $orange
+.bg-orange__lighter
+    background-color                     : $orange-lighter
+.bg-orange__lightest
+    background-color                     : $orange-lightest
+.bg-peach
+    background-color                     : $peach
+.bg-peach__lightest
+    background-color                     : $peach-lightest
+.bg-peach__lighter
+    background-color                     : $peach-lighter
+
+
+//============================================================
+//
+//  Colors.
+//
+//============================================================
+
+
+// Base colors
+$primary                                : $peach
+$secondary                              : $water
+$tertiary                               : #a2cbb0  // this is the only color not delivered from our farm.
+
+// White to Black
+
+$white                                  : #fafafa
+$white-lighter                          : #d1d1d1
+$white-lightest                         : #e5e5e5
+$white-pure                             : #ffffff
+$white-onphoto                          : rgba(255,255,255,.95)
+$text-shadow-onphoto                    : 0 1px rgba(0,0,0,.2)
+
+
+$black                                  : #2F2F2F
+$black-lighter                          : #3b3b3b
+$black-lightest                         : #a9a9a9
+$black-pure                             : #000000
+$black-semi-light                       : #808080
+
+// Assign colours to variable roles
+$base-color                             : $primary
+$heading-color                          : $secondary
+$secondary-heading-color                : $tertiary
+
+
+
+// Links
+$action                                 : $primary
+$action-respond                         : $secondary
+$secondary-action                       : $action-respond
+$secondary-action-respond               : $action
+
+
+
+// Alerts, errors and UI interface
+$alert                                  : red
+$success                                : green
+
+
+
+// Social
+$social-color-facebook                  : #758AC0
+$social-color-twitter                   : #94C4E7
+
+
+// borders
+
+$section-bar-primary                     : 1px solid #e5e5e5
+$section-bar-second                      : 1px solid #f0f0f0
+$border-profile-lap                      : 1px solid #808080
+$border-footer-page                      : 1px solid rgba(0,0,0,1) 
+
+
+//============================================================
+//
+// $FONT-FAMILY
+//
+//============================================================
+//
+// * Font family.
+// * Use less than three fonts.
+
+$helveticaneue-light       : "HelveticaNeue-Light", "Helvetica Neue Light", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, メイリオ, sans-serif
+$georgia                   : Georgia, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, メイリオ, sans-serif
+
+%georgia
+    font-family: $georgia
+
+%helveticaneue-light
+    font-family: $helveticaneue-light
+
+
+//============================================================
+//
+// $BRAND
+//
+//============================================================
+//
+// * Brand stuff.
+//
+$brand-color:       #2eb5e6
+$brand-face:        "Helvetica Neue", 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック'
+
+//
+// * How big would you like round corners to be by default?
+//
+$brand-round:        4px
+
+
+
+//============================================================
+//
+// $FRAMEWORK
+//
+//============================================================
+//
+// * Base units stuff
+//
+
+$base-spacing-unit: $base-line-height
+$half-spacing-unit: $base-spacing-unit / 2
+$line-height-ratio: $base-line-height / $base-font-size
