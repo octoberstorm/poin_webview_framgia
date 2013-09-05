@@ -6,7 +6,6 @@
     %head
         %meta{:charset => "utf-8"}
 
-       
         -# http equiv
         -# =================================================================
         = http_equiv
@@ -14,7 +13,7 @@
 
         -# Site title
         -# =================================================================
-        %title Page title - Poin
+        %title Poin
 
 
         -# AppStore ID
@@ -44,7 +43,7 @@
 
         -# Cascade Style Sheets
         -# =================================================================
-        = stylesheet_link_tag "all"
+        = stylesheet_link_tag "all-static"
         %link{:href => "../webfonts/ss-social-regular.css", :rel => "stylesheet", :type => "text/css"}/
 
 
@@ -64,36 +63,29 @@
         = javascript_include_tag "vendor/modernizr-2.6.1.min"
 
 
-
     %body
         /[if lt IE 7] <p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgradae to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p>
 
+        %nav.nav--main
+            .site-width
+                %a.nav--main__logo{:href => "/"} Poin 
+                .main--nav__menu
+                    %a.main--nav__link{:href => "../pages/about.html"} About
+
+
         .outer
             .inner-wrap
-
-                .page--wrapper
-                    = yield
-
-                    
-
+                = yield
 
         = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"
-        
+
         :javascript
             !window.jQuery && document.write('<script src="javascripts/vendor/jquery-1.8.0.min.js"><\/script>')
       
 
-        = javascript_include_tag "script_page.js"
-        = javascript_include_tag "/webfonts/ss-social"
+        = javascript_include_tag "script_lp"
 
+        %script{:src => "../webfonts/ss-social.js", :type => "text/javascript"}
 
-        :javascript
-
-            NProgress.start();
-            $(window).load(function() {
-                setTimeout(function() { NProgress.done(); } );
-            });
-
-        -#Connect with google analytics
         = partial "partials/google_analytics"
 

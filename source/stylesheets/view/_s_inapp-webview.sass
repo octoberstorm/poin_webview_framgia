@@ -1,0 +1,150 @@
+//------------------------------------------------------------
+//
+//  $INAPP-WEBVIEW
+//
+//------------------------------------------------------------
+
+
+
+
+//
+// Common settings for inapp views
+//
+
+.inapp--header
+    text-align: center
+    color: $black-lighter
+    +trailer(1)
+    +leader(1)
+
+
+//
+// Specific settings for privacy & terms
+//
+
+.privacy-and-terms--container
+    color: $black-lighter
+
+    h2 // headings
+        +adjust-font-size-to(18px)
+        +trailer(1)
+        +leader(2)
+
+    p // paragraphs
+        @extend %georgia
+        +trailer(1)
+    
+
+.privacy-and-terms--card
+    color: $black-lighter
+    +trailer(1)
+    +leader(2)    
+
+    
+
+
+
+
+//
+// Forgot password container
+//
+
+.forgot-password--container
+    @extend .privacy-and-terms--container
+
+    h2
+        text-align: center
+
+
+
+
+
+//
+// FAQ 
+//
+
+
+
+.faq--container
+    @extend .privacy-and-terms--container
+
+    h3
+        +trailer(1)
+        +leader(2)
+
+    img
+        +trailer(5)
+        width: 80%
+        margin-left: 10%
+
+        +breakpoint(mama-dog)
+            width: 50%
+            margin-left: 25%
+
+    span
+        font-style: italic
+        display: block
+        color: $black-lightest
+        +trailer(5)
+
+
+
+
+//
+// Feedbacks
+//
+
+.wufoo
+    +leader(2)
+    +trailer(2)
+
+.feedback--list
+    list-style: none !important
+    margin-left: 0
+    margin-bottom: 0
+
+    li
+        +trailer(2)
+
+.feedback__label
+    +adjust-font-size-to(14px)
+    +trailer(1)
+    color: $black
+    font-weight: bold
+
+.feedback--fieldset
+    border: none 0
+
+
+.feedback__input
+    width: 100%
+    +border-radius($brand-round)
+    +box-shadow(none)
+    border: 1px solid rgba(0,0,0,.1)
+    +padding-leader(.5)
+    +padding-trailer(.5)
+    +adjust-font-size-to(18px)
+    padding-right: em-font(10px)
+    padding-left: em-font(10px)
+
+.feedback__choice--wrap
+    display: block
+
+.feedback__choice--label
+    @extend .feedback__label
+    font-weight: normal
+    display: inline
+
+.feedback--button__submit
+    border: none
+    +box-shadow(none)
+    margin-left: 42%
+
+
+
+
+
+
+
+
+

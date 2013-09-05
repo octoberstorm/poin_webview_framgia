@@ -1,0 +1,350 @@
+
+//
+// OPTION:
+// Add bookstand sheet under books
+// to display neatly.
+//
+// Use this on .lp--books_container
+//
+
+.bookstand--full-width__sheet
+
+    // Display pure white sheet under books
+    &:before
+        content: ''
+        display: block
+        position: absolute
+        bottom: 0
+        width: 100%
+        height: em-font(180px)
+        background-color: $white-pure
+        left: 0
+        right: 0
+
+        // Make this sheet the most bottom layer
+        z-index: -1
+
+
+
+    //
+    // Draw shadow for the end of bleading books edge.
+    // See this helpful article.
+    // http://ivomynttinen.com/blog/going-crazy-with-css3-issue-3-creating-ellipse-shaped-shadows/
+    //
+    &:after
+        width: 100%
+        height: 8px
+        content: ""
+        
+        position: absolute
+        left: 0
+        top: em-font(270px)
+        z-index: -2
+
+        /*This is where the magic happens: by using two border-radii, we can draw an ellipse. Play around with these values and see how this modifies the rendering.*/
+        border-radius: 520px / 8px
+        box-shadow: 0 0 100px rgba(0,0,0,.5)
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//  Make full width book stand
+//
+
+// Decide max point of the fullwidth bookstand
+$bookstand-fullwidth-max:     auto
+
+
+// Start full width bookstand
+.bookstand--full-width
+    display: block
+    position: relative
+    @extend .cf
+
+    // Decide max point of the full width bookstand
+    width: 100%
+    max-width: $bookstand-fullwidth-max
+    margin-left: auto
+    margin-right: auto
+
+
+
+
+
+
+//
+// OPTION:
+// Add gradient for both right and left edge
+// to display nicely
+//
+// Add this class to ".bookstand--full-width"
+//
+
+.bookstand--full-width__gradient-edge
+    
+    // Gradation for the end of scrolling point
+    &:before
+        content: ''
+        height: 100%
+        width: 50px
+        display: block
+        position: absolute
+        left: 0
+        top: 0
+        z-index: 10
+        +background(linear-gradient(left, rgba(255,255,255,1) rgba(255,255,255,0)))
+
+    // Gradation for the beginning of scrolling point
+    &:after
+        content: ''
+        height: 100%
+        width: 50px
+        display: block
+        position: absolute
+        right: 0
+        top: 0
+        z-index: 10
+        +background(linear-gradient(right, rgba(255,255,255,1) rgba(255,255,255,0)))
+
+
+
+
+
+
+
+
+
+
+//
+// To make it easy to understand its scrollable in horizontal way.
+// Scrol it!
+//
+
+.bookstand--full-width__scroll-it
+    width: 100%
+    height: 50px
+    +trailer(.5)
+    +leader(.5)
+    display: block
+    background: url(../images/about/scroll-it.svg) no-repeat
+    background-position: 50% 50%
+    background-size: 95%
+    z-index: 100
+    
+    +opacity(0.5)
+
+    +breakpoint(palm)
+        background-size: 50% 
+
+    
+    +breakpoint(lap)
+        background-size: 40% 
+
+
+
+// fallback for no SVG supported browser
+
+.no-svg .bookstand--full-width__scroll-it
+    background: url(../images/about/scroll-it.png) no-repeat
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Variables for position of bookstand
+//
+
+$full-book-item-width:           em-font(135px)
+$full-book-item-margin-bottom:   em-font(65px)
+$full-book-item-margin-right:    em-font(20px)
+
+.bookstand--full-width__container
+    width: 100%
+    white-space: nowrap
+    overflow-x: auto
+    cursor: move
+    font-size: 100%
+
+    // Adding this for mobile view
+    // you will get nicer white space.
+    padding-left: em-font(50px)
+    padding-right: em-font(50px)
+
+
+    // remove cursor "move"
+    +breakpoint(desk)
+        cursor: auto
+
+
+//
+// Start book-item fullwidth .ver
+//
+
+.book--item__full
+    // extend bro
+    @extend .book--item
+    
+    // Adjust for inline max width style
+    width: $full-book-item-width    
+
+    // Remove float
+    float: none
+
+    // Display inline & add white-space to make it scroll
+    display: inline-block
+    white-space: normal
+
+
+    // Variables from above
+    // Add margin right as same amount
+    // Margin bottom making white space for author's area (Need to add "!important")
+    margin-bottom: $full-book-item-margin-bottom
+    margin-right:  $full-book-item-margin-right!important
+
+
+    // Add margin-top to make empty space
+    // for hover aciton
+    margin-top: 2em
+
+
+
+
+
+    +breakpoint(palm)
+
+        // To stop blinking other elements. Aww buggy...
+        -webkit-backface-visibility: hidden
+        -webkit-transform-style: preserve-3d
+        +transition(all .2s ease-in-out)
+
+        &:hover
+            +translateY(-10px)
+
+
+
+
+
+
+
+
+
+
+//
+// about author
+//
+
+$book-author-pull-bottom:    em-font(-50px)
+
+.book--item--full--author
+
+    // pull bottom to show bottom of the book
+    bottom: $book-author-pull-bottom
+
+
+    position: absolute
+    left: 0
+    width: 100%
+    display: block
+    text-align: left
+    @extend .cf
+
+
+    // Hovered link color
+    &:hover
+        .book--item--full--author__job,
+        .book--item--full--author__name
+            color: $brand-color
+
+
+
+
+
+
+
+
+//
+// Book author's icon
+//
+
+$full-book-author-icon-size:  em-font(34px)
+
+.book--item--full--author__icon
+    width: $full-book-author-icon-size
+    height: $full-book-author-icon-size
+    +border-radius($brand-round)
+    margin-right: em-font(10px)
+    background-size: cover
+    background-position: center
+    float: left
+
+
+
+
+
+//
+// Book author's job & name
+//
+
+
+// author's job
+.book--item--full--author__job
+    +adjust-font-size-to(12px)
+    +adjust-leading-to(.7, 12px)
+    color: $black-lightest
+    // Trancate when it will be 2 line long.
+    width: 65%
+    float: left
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+
+
+
+// author's name
+.book--item--full--author__name
+    +adjust-font-size-to(14px)
+    font-weight: bold
+    color: $black-lightest
+
+    // Trancate when it will be 2 line long.
+    width: 65%
+    float: left
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+
+
+
+// This is special "you"
+.book--item--full--author__you
+    color: $water
+
+

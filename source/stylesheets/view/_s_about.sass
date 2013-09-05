@@ -1,0 +1,706 @@
+
+//------------------------------------------------------------
+//
+//  $ABOUT
+//
+//------------------------------------------------------------
+
+
+
+//
+// Exagerate "How was it." nicer.
+//
+
+.draw-underline
+    display: inline
+    padding-bottom: 2em
+    background: url(../images/about/underline-1.svg) no-repeat
+    background-position: 55% 48%
+    background-size: 85%
+    text-decoration: none
+
+    &:hover
+        color: $black-lightest
+
+    +breakpoint(palm)
+        background-size: 100%        
+        background-position: 46% 48%    
+        
+
+
+
+
+
+
+
+
+//
+// Start about header with nice iphone
+//
+
+
+.about--header
+    position: relative
+    margin-top: 0
+    margin-bottom: 0
+    width: 100%
+    text-align: center
+    overflow: hidden
+
+    // minimal height
+    min-height: 300px
+
+    // Add paddings for top and bottom
+    +padding-trailer(2)
+
+    +breakpoint(palm)
+        height: auto
+
+
+.hero__title
+    position: relative
+    +trailer(3)
+    +leader(3)
+    +adjust-font-size-to(18px)
+    color: $black-lighter
+    text-align: center
+
+    +breakpoint(palm)
+        +adjust-font-size-to(40px)
+        +trailer(2)
+        +leader(2)
+
+
+
+
+
+
+
+//
+// Container of iphone screenshot & download button
+//
+.about--header__info
+    display: block
+    position: relative
+    width: 100%
+    +leader(1)
+    @extend .cf
+
+
+
+
+
+
+
+//
+// Screenshot design
+//
+
+
+
+.about--header--screenshot
+    width: 100%
+    max-height: em-font(200px)
+    overflow: hidden
+    position: relative
+
+    //
+    // To resolve fixed positioning with animated elements
+    // on the same page.
+    //
+    // Find out more in:
+    // http://stackoverflow.com/questions/11563612/css3-animations-breaking-fixed-positioning-when-page-scrolled
+    //
+    -webkit-transform: translate3d(0, 0, 0)
+    transform        : translate3d(0, 0, 0)
+
+
+
+    +breakpoint(palm)
+        width: 50%
+        float: left
+
+.about--header--screenshot__half
+    width: 60%
+    margin-left: auto
+    margin-right: auto
+    height: auto
+    text-align: center
+    overflow: hidden
+
+    // Make our iphone smaller
+    +breakpoint(palm)
+        width: 50%
+
+
+    // half shadow
+    &:after
+        width: 80%
+        height: 8px
+        content: ""
+        position: absolute
+        left: 10%
+        top: em-font(200px)
+
+        /*This is where the magic happens: by using two border-radii, we can draw an ellipse. Play around with these values and see how this modifies the rendering.*/
+        border-radius: 520px / 8px
+        box-shadow: 0 0 12px rgba(0,0,0,0.5)
+        
+
+        +breakpoint(palm)
+            width: 60%
+            left: 20%
+
+
+
+.about--footer__inner
+    @extend .site-width
+
+
+
+
+//
+// Download area
+//
+
+
+.about--footer__download
+    width: 100%
+    text-align: center
+
+
+    +breakpoint(palm)
+        width: 50%
+        float: left
+        text-align: left
+
+    +breakpoint(lap)
+        padding-left: em-font(60px)
+
+
+    p
+        color: $black-lightest
+        +leader(2)
+        +trailer(1)
+
+
+
+
+
+
+//
+// Make it animate ".profile--user__container"
+// when its larger than laptop
+//
+
+
+// Set keyframes
++keyframes(iphone-slideInUp)
+    0%
+        // +opacity(0)
+        +translateY(500px)
+
+    100%
+        +opacity(1)
+        +translateY(0)
+
+
+
+.about--header--screenshot__slideInUp
+    
+    // Make it animate when its laptop
+    // +breakpoint(lap)
+    +animate(iphone-slideInUp, .5s, 1.3s, $easeInOutQuad, both)
+    
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Takeaway starts form here
+//
+
+
+.about--takeaways
+    position: relative
+
+
+
+
+
+//
+// Section area of takeaways
+//
+
+.about--takeaway
+    +padding-leader(2)
+    +padding-trailer(2)
+    overflow: hidden
+
+
+
+
+
+
+//
+// If its odd num, its background should have white.
+// I mean #ffffff. 
+//
+
+
+.about--takeaway__white-bg
+    background-color: #FFF
+
+
+
+
+
+
+
+
+//
+// Base settings of takeaway's title & details.
+//
+
+
+.about--takeaway__inner
+    @extend .site-width
+
+.about--takeaway__title
+    +padding-leader(1)
+    +padding-trailer(1)
+    margin-top: 0 !important
+    margin-bottom: 0
+    +adjust-font-size-to(23px)
+    text-align: center
+    color: $black-lighter
+    @extend .inner-width
+
+
+    // make heading bigger
+    +breakpoint(lap)
+        +adjust-font-size-to(30px)
+
+
+.about--takeaway__detail
+    +transition(all 0.5s ease-in-out)
+
+    p
+        @extend .inner-width
+        @extend %georgia
+        color: $black-lighter
+        +padding-trailer(2)
+
+
+
+
+
+
+
+
+//
+// Books explaination will starts form here.
+// It featured on "Who" make "What" kind of book
+// in order to get reader inspiration what kind of book he can make. 
+//
+
+.about--takeaway--books
+    @extend .cf
+    overflow: hidden
+    position: relative
+    width: 100%
+    
+
+    // Set bookstands max width
+    .bookstand--full-width
+        max-width: 1600px
+
+
+
+
+    // Make it darker
+    .bookstand--full-width__scroll-it
+        +opacity(1)
+
+
+
+
+.about--takeaway--book--author__you
+    color: $water
+
+
+
+
+
+
+
+
+
+
+
+//
+// Takeaway about pages will starts from here.
+// Featured "Points" + "Photo" = "How was it."
+//
+    
+.about--takeaway--pages
+    display: block
+    position: relative
+    white-space: nowrap
+    @extend .cf
+
+
+
+
+//
+// Exagerrate its clickable.
+// Just try clicking one of 'em!
+//
+
+
+.about--takeaway--pages__try-click
+
+    width: 100%
+    height: em-font(100px)
+    +trailer(1)
+    +leader(1)
+    display: block
+    background: url(../images/about/try-click.svg) no-repeat
+    background-position: 70% 100%
+    background-size: 70%
+
+    
+    +breakpoint(palm)
+        +trailer(1)
+        +leader(1)
+        background-position: 20% 90%
+        background-size: 35%
+
+
+// fallback for no SVG supported browser
+
+.no-svg .about--takeaway--pages__try-click
+    background: url(../images/about/try-click.png) no-repeat
+
+
+
+//
+// Pages mozeic grid
+//
+
+$about-takeaway-page-gutter : em-font(20px)
+$about-takeaway-page-size   : em-font(200px)
+
+
+
+
+//
+// Pages top
+//
+
+.about--takeaway--pages__top
+    +leader(3)
+    margin-left: - $about-takeaway-page-size + $about-takeaway-page-gutter
+    margin-bottom: $about-takeaway-page-gutter
+
+
+
+
+
+//
+// Pages bottom
+//
+
+.about--takeaway--pages__bottom
+    +trailer(3)
+    margin-left: - $about-takeaway-page-size - $about-takeaway-page-gutter*4
+
+.about--takeaway--page
+    width: $about-takeaway-page-size
+    height: $about-takeaway-page-size
+    display: inline-block
+    position: relative
+    margin-right: $about-takeaway-page-gutter
+    +border-radius($brand-round)
+
+    img
+        +border-radius($brand-round)
+
+.about--takeaway--page__howwasit
+    position: absolute
+    bottom: 0
+    right: 0
+
+.about--takeaway--page__num
+    +adjust-font-size-to(60px)
+    @extend %helveticaneue-light
+    font-weight: lighter
+    color: rgba(255,255,255,.9)
+    display: inline-block
+    position: relative
+    margin-right: em-font(-4px)
+    text-shadow: 0 1px rgba(0,0,0,.2)
+
+
+.about--takeaway--page__feeling
+    position: relative
+    +adjust-font-size-to(12px)
+    color: rgba(255,255,255,.9)
+    display: inline-block
+    text-transform: uppercase
+    top: em-font(-22px)
+    margin-right: em-font(-10px)
+    +rotate(-90deg)
+    margin-right: em-font
+    letter-spacing: 2px
+    text-shadow: 0 1px rgba(0,0,0,.2)
+
+
+
+
+
+
+
+
+
+
+
+//
+// Tips area will starts from here.
+// When click the word "Otaku" its definition will show up
+//
+
+.tips-area
+    @extend %georgia
+    position: relative
+    color: $black-lighter
+
+    +breakpoint(palm)
+        margin-left: 10%
+
+    p
+        margin-left: 0
+        display: inline
+
+.tips
+    display: inline
+    cursor: pointer
+    @extend %georgia
+    
+
+// Show otaku in English when its mobile
+.otaku-japanese
+    text-decoration: underline
+    display: inline
+    
+.otaku-english
+    display: inline
+    text-decoration: underline
+
+    +breakpoint(palm)
+        display: none
+
+// show & hide tips bubble
+
+.js-tips--active
+    .tips-bubble
+        +opacity(1)
+       
+        // Transforms
+        +simple-transform(1, 0deg, 0, 0)
+
+
+
+
+
+
+
+//
+// Tips bubble Variables
+//
+
+$tips-bubble-negative-top:      em-font(-250px)
+$tips-bubble-arrow-position:    em-font(165px)
+$tips-bubble-max-width:         em-font(300px)
+
+
+//
+// Design tips bubble.
+//
+.tips-bubble
+    position: absolute
+    display: block
+    top: $tips-bubble-negative-top
+    width: 100%
+    max-width: $tips-bubble-max-width
+    background-color: $black
+    padding: 1em
+    +border-radius($brand-round)
+    @extend %georgia
+    +opacity(0)
+    +box-shadow(0 1px 5px rgba(0,0,0,.5))
+
+    // Transforms
+    +simple-transform(.5, 0, 0, -100px)
+
+
+    +transition(all 0.3s $easeInOutCubic)
+    
+    // To stop blinking other elements. Aww buggy...
+    -webkit-backface-visibility: hidden
+    -webkit-transform-style: preserve-3d
+
+
+        
+
+
+    // bottom triangle
+    &:after
+        content: ''
+        display: block
+        position: absolute
+        bottom: -14px
+        left: $tips-bubble-arrow-position
+        +arrow(30px, 14px, down, $black)
+
+.tips
+    text-decoration: underline
+
+.tips-bubble__title
+    +adjust-font-size-to(24px)
+    font-weight: bold
+    color: #fff
+
+.tips-bubble__subtitle
+    +adjust-font-size-to(16px)
+    color: $black-lightest
+    font-style: italic
+    +trailer(.5)
+
+.tips-bubble__detail
+    color: #fff
+    +adjust-font-size-to(16px)
+    border-bottom: 1px solid #585858
+    +padding-trailer(.5)
+    +trailer(.5)
+
+.tips-bubble__source
+    color: $black-lightest
+    text-align: right
+    +adjust-font-size-to(12px)
+    a
+        color: $black-lightest
+
+.otaku-lists
+    @extend .tips-area
+    @extend %georgia
+    color: $black-lighter
+    margin-left: 10%  
+
+    +leader(2)
+    +trailer(2)
+
+
+
+
+
+
+
+
+
+//
+// About footer will starts here
+// It contains screenshot & download link to the app store.
+//
+
+.about--footer
+    position: relative
+    display: block
+    background-color: $black
+    +padding-trailer(4)
+    +padding-leader(4)
+    overflow: hidden
+    @extend .cf
+
+.poin-screenshot
+    width: 100%
+
+    +breakpoint(palm)
+        width: 50%
+        float: left
+
+.poin-screenshot__half
+    width: 80%
+    margin-left: auto
+    margin-right: auto
+    height: auto
+    text-align: center
+    position: relative
+    overflow: hidden
+
+
+    +breakpoint(lap)
+        float: right
+        max-width: 600px
+        margin-left: 20%
+
+    // half shadow
+    &:after
+        width: 100%
+        height: 8px
+        content: ""
+        position: absolute
+        left: 0
+        bottom: em-font(-8px)
+
+        /*This is where the magic happens: by using two border-radii, we can draw an ellipse. Play around with these values and see how this modifies the rendering.*/
+        border-radius: 520px / 8px
+        box-shadow: 0 0 12px rgba(0,0,0,0.8)
+        
+        +breakpoint(lap)
+            width: 80%
+            left: 10%
+            bottom: em-font(-5px)
+
+
+.about--footer__download
+    width: 100%
+    text-align: center
+
+    +breakpoint(palm)
+        width: 50%
+        float: left
+        text-align: left
+
+    +breakpoint(lap)
+        padding-left: em-font(60px)
+
+
+    p
+        color: $black-lightest
+        +leader(2)
+        +trailer(1)

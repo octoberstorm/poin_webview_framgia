@@ -1,0 +1,403 @@
+//------------------------------------------------------------
+//
+//  $LANDING
+//
+//------------------------------------------------------------
+
+
+
+//
+// NOTE: Containing landing page related views such as...
+//       "app-*" is using no-header layout for in app web view.
+//
+//
+//         - index.html
+//         - privacy.html
+//         - terms.html
+//         - about.html
+//         - thanks.html
+//         - confirm.html
+//         - app-privacy.html
+//         - app-terms.html
+//         - app-feedback.html
+//         - app-signup-failed.html
+//         - app-forgot.html
+//
+
+
+
+
+
+
+
+
+
+//
+// Start designing navigation
+//
+
+
+// Set wrapper
+.nav--main
+    width: 100%
+    display: block
+    overflow: hidden
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 100
+    +padding-leader(.5)
+    +padding-trailer(.5)
+
+
+
+// Set logo size
+
+$nav-main-logo-width          : em-font(84px)
+$nav-main-logo-height         : em-font(21px)
+
+
+
+// Set Poin icon
+.nav--main__logo
+    text-indent: -9999999px
+    overflow: hidden
+    width: $nav-main-logo-width
+    height: $nav-main-logo-height
+    text-align: left
+    display: block
+    float: left
+    background-image: url(../images/lp/poin_logo_dark.svg)
+    background-position: center
+    background-repeat: no-repeat
+    background-size: 100%
+
+
+// Fallback for non supporting svg browser.
+
+.no-svg .nav--main__logo
+    background-image: url(../images/lp/poin_logo_dark.png)
+    
+
+
+// Set menu lists
+
+.main--nav__menu
+    float: right
+    text-align: right
+    display: block
+    
+
+// Set nav links
+
+.main--nav__link
+    vertical-align: middle
+    text-decoration: none
+    font-weight: bold
+    +adjust-font-size-to(12px)
+    color: $black-lightest
+
+
+
+
+
+
+
+
+
+
+
+//
+// Container of messages (tagline/sub-title/email form)
+//
+
+.lp__messages
+    text-align: center
+    position: relative
+
+    padding-top: 20%
+    +trailer(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// Tagnline
+//
+
+.lp__tagline
+    text-align: center
+    +adjust-font-size-to(30px)
+    color: $black
+
+    // make tagline larger.
+
+    +breakpoint(palm)
+        +adjust-font-size-to(40px)
+
+
+
+//
+// Subtitles
+//
+
+.lp__sub-title
+    +leader(1)
+    +trailer(.5)
+    text-align: center
+    +adjust-font-size-to(20px)
+    color: $black-semi-light
+
+    min-height: em-font(70px)
+
+    +breakpoint(palm)
+        min-height: 0
+
+
+
+
+//
+// small accent for key words on sub titles.
+//
+
+.lp__sub-title span
+    padding: 0.15em 0.4em
+    margin-right: 0.25em
+    color: $white-pure
+    font-weight: bold
+    +border-radius($brand-round)
+
+
+// Remove "br" for tablet or larger.
++breakpoint(palm)
+    .lp__sub-title br
+        display: none
+
+
+
+
+
+
+
+
+//
+// Email form adjustments
+//
+// Note: This should be changed after launched.
+//
+
+.lp--beta--field
+    display: block
+    
+
+
+
+
+
+
+
+
+//
+// Spesific settings for lp top view
+//
+
+
+.button.button--lp
+    +opacity(0)
+    display: inline-block
+    +adjust-font-size-to(18px)
+    border: 1px solid transparent
+    +border-radius($brand-round)
+    background-color: transparent
+    letter-spacing: em-font(1px)
+    width: 50%
+    margin-bottom: -50px
+    color: transparent
+
+
+
+.field.valid form .button.button--lp
+    +opacity(1)
+    background-color: $peach
+    color: #fff
+    +animate(poining, .5s, 0, ease-in-out, both)
+
+
+
+
+
+
+
+
+
+//
+// display bookshelf.
+//
+
+.lp--books__container
+    position: relative
+    text-align: center
+
+    +breakpoint(desk)
+        position: fixed
+        width: 100%
+        bottom: 0
+        left: 0
+        right: 0
+
+    
+
+
+
+
+
+
+
+
+
+
+
+//
+// Animations for topview of landing page
+//
+
+// keyframes
+
++keyframes(scaleIn)
+    0%
+        +opacity(0)
+        +scale(0.6)
+    100%
+        +opacity(1)
+        +scale(1)
+
++keyframes(fadeIn)
+    0%
+        +opacity(0)
+    100%
+        +opacity(1)
+
+
++keyframes(fadeInDown)
+    0%
+        opacity: 0
+        +translateY(-2em)
+        +transition(ease-in)
+
+    100%
+        opacity: 1
+        +translateY(0)
+
+
+//
+// Poining
+// Remove when you launch Poin.
+//
+
+
++keyframes(poining)
+    0%
+        opacity: 0
+        +translateY(-50px)
+        +transition(ease-in)
+    16%
+        opacity: 1
+        +translateY(10px)
+        +transition(ease-out)
+    32%
+        +translateY(-25px)
+        +transition(ease-in)
+    48%
+        +translateY(8px)
+        +transition(ease-out)
+    62%
+        +translateY(-10px)
+        +transition(ease-in)
+    78%
+        +translateY(3px)
+        +transition(ease-out)
+    90%
+        +translateY(-3px)
+        +transition(ease-in)
+    100%
+        +translateY(0px)
+        +transition(ease-out)
+
+
+
+// delays
+
+$fadein-tagline-delay-one               : .8s
+$fadein-cover-delay-two                 : $fadein-tagline-delay-one + 1s
+$fadein-cover-delay-three               : $fadein-cover-delay-two + .1s
+$fadein-cover-delay-four                : $fadein-cover-delay-three + .1s
+$fadein-cover-delay-five                : $fadein-cover-delay-four + .1s
+$fadein-cover-delay-six                 : $fadein-cover-delay-five + .1s
+$fadein-cover-delay-seven            : $fadein-cover-delay-six + .1s
+$fadein-last-delay-eight                : $fadein-cover-delay-seven + .8s
+
+
+
+// animations
+
+.scaleIn
+    +animate(scaleIn, .2s, .5s, $easeInOutQuad, both)
+
+.fadeIn
+    +animate(fadeIn, 1s, 1s, $easeInOutQuad, both)
+
+
+.fadeIn-tagline
+    +animate(fadeInDown, .4s, $fadein-tagline-delay-one, $easeInOutQuad, both)
+.fadeInDown-one
+    +animate(fadeInDown, .35s, $fadein-cover-delay-two, $easeInQuad, both)
+.fadeInDown-two
+    +animate(fadeInDown, .35s, $fadein-cover-delay-three, $easeInQuad, both)
+.fadeInDown-three
+    +animate(fadeInDown, .35s, $fadein-cover-delay-four, $easeInQuad, both)
+.fadeInDown-four
+    +animate(fadeInDown, .35s, $fadein-cover-delay-five, $easeInQuad, both)
+.fadeInDown-five
+    +animate(fadeInDown, .35s, $fadein-cover-delay-six, $easeInQuad, both)
+.fadeInDown-six
+    +animate(fadeInDown, .35s, $fadein-cover-delay-six, $easeInQuad, both)
+.fadeInDown-seven
+    +animate(fadeInDown, .35s, $fadein-cover-delay-seven, $easeInQuad, both)
+.fadeIn-last
+    +animate(fadeIn, 1s, $fadein-last-delay-eight, $easeInOutQuad, both)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

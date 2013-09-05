@@ -6,20 +6,63 @@
     %head
         %meta{:charset => "utf-8"}
 
-        -# Defined metadata for right order in site_helpers.rb
+        
+        -# http equiv
+        -# =================================================================
         = http_equiv
+
+
+        -# Site title
+        -# =================================================================
+        %title User's name - Poin
+
+
+        -# AppStore ID
+        -# =================================================================
+        %meta{:name => "apple-itunes-app", :content => "app-id=myAppStoreID"}
+
+
+        -# Description
+        -# =================================================================
+        %meta{:name => "description", :content => "A new place to write and organize your \"How Was It\". Available for your iPhone."}
+
+
+        -# Name of Author
+        -# =================================================================
+        %meta{:name => "author", :content => "Poin"}
+
+
+        -# Viewport
+        -# =================================================================
         = viewport
+
+
+        -# Open Graph Protocols
+        -# =================================================================
         = og
 
-        -# To set titles and descriptions globally and for each individual page, see /DOCS.md
-        %title Profile
 
-        -#Favicon Options:
-        -#Update favicon_base.png in /source and middleman-favicon-maker will generate all the versions you need on 'middleman build'
-        -#OR, place favicon.ico and apple-touch-icon.png in /source and deactivate :favicon_maker in config.rb
-
+        -# Cascade Style Sheets
+        -# =================================================================
         = stylesheet_link_tag "all"
+        %link{:href => "../webfonts/ss-social-regular.css", :rel => "stylesheet", :type => "text/css"}/
+
+
+        -# Favicon
+        -# =================================================================
+        %link{:href => "/favicon.ico", :rel => "shortcut icon"}
+
+        -# iPad 3 Retina Display
+        %link{:rel => "apple-touch-icon-precomposed", :sizes => "144x144", :href => "/img/touch/apple-touch-icon-144x144-precomposed.png"}
+
+        -# iPhone 4 Retina display
+        %link{:rel => "apple-touch-icon-precomposed", :sizes => "114x114", :href => "/img/touch/apple-touch-icon-114x114-precomposed.png"}
+
+
+        -# Modernizer
+        -# =================================================================
         = javascript_include_tag "vendor/modernizr-2.6.1.min"
+
 
 
     %body
@@ -35,9 +78,10 @@
 
 
         = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"
-        :javascript
-            window.jQuery || document.write('<script src="javascripts/vendor/jquery-1.8.0.min.js"><\/script>')
 
+        :javascript
+            !window.jQuery && document.write('<script src="javascripts/vendor/jquery-1.8.0.min.js"><\/script>')
+      
         = javascript_include_tag "script_profile"
         = javascript_include_tag "/webfonts/ss-social"
 

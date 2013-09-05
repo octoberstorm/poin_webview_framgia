@@ -1,0 +1,43 @@
+---
+layout: l_no-header
+---
+ 
+.site-width
+    .inner-width
+        %form#form2.wufoo.topLabel.page{:action => "https://poin.wufoo.com/forms/m7x4z5/#public", :autocomplete => "off", :enctype => "multipart/form-data", :method => "post", :name => "form2", :novalidate => ""}
+            %ul.feedback--list
+                %li#foli1.notranslate
+                    %label#title1.desc.feedback__label{:for => "Field1"} お名前
+                    %div
+                        %input#Field1.feedback__input{:maxlength => "255", :name => "Field1", :onkeyup => "", :tabindex => "1", :type => "text", :value => ""}/
+                %li#foli2.notranslate
+                    %label#title2.desc.feedback__label{:for => "Field2"} メールアドレス
+                    %div
+                        %input#Field2.feedback__input{:maxlength => "255", :name => "Field2", :onkeyup => "", :tabindex => "2", :type => "text", :value => ""}/
+                %li#foli3.notranslate
+                    %fieldset.feedback--fieldset
+                        %label#title3.desc.feedback__label
+                            該当する問題をお選びください
+                            %span#req_3.req *
+                        %div
+                            %input#radioDefault_3{:name => "Field3", :type => "hidden", :value => ""}/
+                            %span.feedback__choice--wrap
+                                %input#Field3_0.field.radio{:checked => "checked", :name => "Field3", :required => "", :tabindex => "3", :type => "radio", :value => "スパムまたは不正利用"}/
+                                %label.choice.feedback__choice--label{:for => "Field3_0"} スパムまたは不正利用
+                            %span.feedback__choice--wrap
+                                %input#Field3_1.field.radio{:name => "Field3", :required => "", :tabindex => "4", :type => "radio", :value => "不具合"}/
+                                %label.choice.feedback__choice--label{:for => "Field3_1"} 不具合
+                %li#foli4.notranslate
+                    %label#title4.desc.feedback__label{:for => "Field4"}
+                        問題の内容をご記入ください。
+                        %span#req_4.req *
+                    %div
+                        %textarea#Field4.feedback__input{:cols => "50", :name => "Field4", :onkeyup => "", :required => "", :rows => "10", :spellcheck => "true", :tabindex => "5"}
+                %li.buttons
+                    %div
+                        %input#saveForm.btTxt.submit.button.feedback--button__submit{:name => "saveForm", :type => "submit", :value => "送信"}/
+                %li.is-hidden
+                    %label{:for => "comment"} Do Not Fill This Out
+                    %textarea#comment{:cols => "1", :name => "comment", :rows => "1"}
+                    %input#idstamp{:name => "idstamp", :type => "hidden", :value => "YpSUDYZ0XXSglshDQ0ZP5E2+4POG7mv7iECbFKPjpJU="}/
+
