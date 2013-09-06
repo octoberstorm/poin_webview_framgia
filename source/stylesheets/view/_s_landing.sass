@@ -385,10 +385,32 @@ $fadein-last-delay-eight                : $fadein-cover-delay-seven + .8s
 
 
 
+//
+// Legal's layouts
+//
+// ^pages/privacy.haml
+// ^pages/terms.haml
+//
 
 
+.legal--header
+    +padding-leader(5)
+    +padding-trailer(2)
+    color: $black-lighter
+    text-align: center
+
+    span
+        +leader(.5)
+        color: $black-lightest
+        +adjust-font-size-to(12px)
+        @extend %georgia
+        display: block
+        
 
 
+.legal--container
+    +padding-leader(2)
+    background-color: #FFF
 
 
 

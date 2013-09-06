@@ -4,7 +4,10 @@ layout: l_no-header
  
 .site-width
     .inner-width
-        %form#form2.wufoo.topLabel.page{:action => "https://poin.wufoo.com/forms/m7x4z5/#public", :autocomplete => "off", :enctype => "multipart/form-data", :method => "post", :name => "form2", :novalidate => ""}
+        / %form#form2.wufoo.topLabel.page{:action => "https://poin.wufoo.com/forms/m7x4z5/#public", :autocomplete => "off", :enctype => "multipart/form-data", :method => "post", :name => "form2", :novalidate => ""}
+
+        %form#form2.wufoo.topLabel.page{:action => "http://poin.wufoo.com/forms/z7x4m1/", :autocomplete => "off", :enctype => "multipart/form-data", :method => "post", :name => "form2", :novalidate => ""}
+
             %ul.feedback--list
                 %li#foli1.notranslate
                     %label#title1.desc.feedback__label{:for => "Field1"} お名前
@@ -39,5 +42,7 @@ layout: l_no-header
                 %li.is-hidden
                     %label{:for => "comment"} Do Not Fill This Out
                     %textarea#comment{:cols => "1", :name => "comment", :rows => "1"}
-                    %input#idstamp{:name => "idstamp", :type => "hidden", :value => "YpSUDYZ0XXSglshDQ0ZP5E2+4POG7mv7iECbFKPjpJU="}/
+                    / %input#idstamp{:name => "idstamp", :type => "hidden", :value => "YpSUDYZ0XXSglshDQ0ZP5E2+4POG7mv7iECbFKPjpJU="}/
+
+                    %input#idstamp{:name => "idstamp", :type => "hidden", :value => "sNmWaImW2nUOfxr2d/Tl0/XNksCz7sKXL79+4VJd8bM="}/
 

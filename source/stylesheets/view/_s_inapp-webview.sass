@@ -12,11 +12,16 @@
 //
 
 .inapp--header
-    text-align: center
     color: $black-lighter
     +trailer(1)
     +leader(1)
 
+    span
+        color: $black-lightest
+        +adjust-font-size-to(12px)
+        @extend %georgia
+        display: block
+        
 
 //
 // Specific settings for privacy & terms
@@ -24,24 +29,66 @@
 
 .privacy-and-terms--container
     color: $black-lighter
+    @extend %georgia
+
 
     h2 // headings
         +adjust-font-size-to(18px)
         +trailer(1)
         +leader(2)
+        font-family: $base-font-family
 
     p // paragraphs
-        @extend %georgia
         +trailer(1)
     
+    ol
+        margin-left: em-font(23px)
 
+    ul
+        margin-left: em-font(23px)
+
+    li
+        +trailer(.5)
+
+    a
+        -ms-word-break: break-all
+        word-break: break-all
+        word-wrap: break-word
+
+
+
+
+
+// Decimal with bracket ordered list
+.bracket-ordered-list
+    list-style: none
+    list-style-position: inside
+    margin-left: 0!important
+    +trailer(1)
+    +leader(1)
+
+
+
+
+
+// Decimal with bracket ordered list
+.roman-ordered-list
+    list-style: lower-roman
+    +padding-leader(1)
+    +padding-trailer(1)
+    // padding-left: em-font(23px)
+
+
+
+
+
+
+
+// Privacy and terms card
 .privacy-and-terms--card
     color: $black-lighter
     +trailer(1)
     +leader(2)    
-
-    
-
 
 
 
