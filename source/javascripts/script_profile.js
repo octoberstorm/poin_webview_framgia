@@ -58,6 +58,7 @@ b});
 
 
 
+
 //
 // Load image when it close to the viewport.
 // See more: http://luis-almeida.github.io/unveil/
@@ -66,6 +67,17 @@ b});
 $(document).ready(function() {
   $("img").unveil( 400 );
 });
+
+
+
+
+// Anchoring inline links
+// http://kachibito.net/snippets/replace-plain-urls-with-links
+var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+$('.profile--user__description').html($('.profile--user__description').html().replace(exp,"<a href='$1' target='_blank'>$1</a>"));
+
+
+
 
 
 

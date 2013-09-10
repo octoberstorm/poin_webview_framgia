@@ -307,10 +307,21 @@ $profile-user-icon-size: em-font(73px)
     color: $white-onphoto
     text-shadow: $text-shadow-onphoto
 
+    a
+        color: $white-onphoto
+        text-shadow: $text-shadow-onphoto
+
+
+
     +breakpoint(lap)
         text-shadow: none
         color: $black-lighter
         font-size: 100%
+
+        a
+            color: $black-lighter
+            text-shadow: none
+
 
 
 //
@@ -337,7 +348,8 @@ $profile-user-icon-size: em-font(73px)
         +adjust-font-size-to(12px)
         padding: 0
         padding-top: em-font(10px)
-        max-height: 150px
+        height: em-font(80px)
+        max-height: em-font(130px)
         overflow: hidden
 
         &:after
