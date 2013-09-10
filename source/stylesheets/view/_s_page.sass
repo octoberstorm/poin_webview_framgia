@@ -749,6 +749,7 @@ $silver-ratio                 : 141.42%
     display: block
     overflow: hidden
     background-color: $black-lighter    
+    @extend .cf
 
     // Remove background color in order to match "White" background on laptop    
     +breakpoint(lap)
@@ -759,63 +760,6 @@ $silver-ratio                 : 141.42%
 
 
 
-
-
-
-//
-// Align center and add width for navigation inner
-//
-
-.page--nav__inner
-
-    @extend .page--inner
-
-    // Remove the margin you've just set above
-    +breakpoint(lap)
-        margin-bottom: 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// Display previous & next page as "read next"
-// Yes I'm just pretending Amazons "You might..." trush.
-// * Note: Remove this when it's laptop because 
-//         it will turn into real "Prev" & "Next" literally 
-//
-
-.page--read-next
-    text-transform: uppercase
-    font-weight: bold
-    text-align: center
-    color: $black-lightest
-    +padding-leader(2)
-    +padding-trailer(1)
-
-    // Show accent undre line
-    &:after
-        display: block
-        content: '' 
-        width: em-font(30px)
-        height: 3px
-        margin-top: em-font(10px)
-        margin-left:  auto
-        margin-right: auto
-        background: $black-lightest
-
-
-    // Display none when its laptop.
-    +breakpoint(lap)
-        display: none
 
 
 
@@ -836,21 +780,20 @@ $silver-ratio                 : 141.42%
     // for mobile & tablet
     position: relative
     display: block
-    width: 100%
-    text-align: left
-    +padding-leader(.5)
-    +padding-trailer(.5)
-    +adjust-font-size-to(24px)
+    width: 50%
+    +padding-leader(1.5)
+    +padding-trailer(1.5)
+    +adjust-font-size-to(14px)
 
-    color: $white
+
+    color: $black-lightest
     font-weight: bold
     text-decoration: none
 
+    &:hover
+        background-color: $black-pure
+        color: $black-lightest
 
-    // Add border-bottom for each links
-    border-bottom: $section-bar-second
-    border-bottom-color:  $black
-    border-bottom-style: dotted
 
 
     // Make it fluid bigger & play with animation on laptop size screen!
@@ -860,11 +803,11 @@ $silver-ratio                 : 141.42%
         width: em-font(130px)
         overflow: hidden
     
-        color: $black-lightest
         +adjust-font-size-to(18px)
 
-        // Remove border-bottoms from the vintage old age.
-        border-bottom: none
+        // Remove right & left padding from mobile age
+        padding-right: 0
+        padding-left: 0
 
 
         // Add white space in order to click easely
@@ -891,6 +834,8 @@ $silver-ratio                 : 141.42%
         // Animate a bit to suggest there's next or previous page.
         &:hover
             +translateX(0)
+            color: $black-lightest
+            background-color: $white
 
 
 
@@ -908,13 +853,27 @@ $page-nav-position-from-side:       5%
 //
 
 .page--prev
+    text-align: left
+    float: left
+
+
+    // Display prev icon
+    background: url(../images/page/prev.svg) no-repeat
+    background-position: 10% 50%
+    padding-left: 12%
+    padding-right: 5%
+
+
+
     +breakpoint(lap)
+        // Remove padding-right
+        padding-right: 0
+
 
         // Position the navigation
         left: $page-nav-position-from-side
 
         // Display prev icon
-        background: url(../images/page/prev.svg) no-repeat
         background-position: left
         padding-left: em-font(20px)
 
@@ -923,9 +882,9 @@ $page-nav-position-from-side:       5%
 
 
 // Fall back for no svg supported browser
-+breakpoint(lap)
-    .no-svg .page--prev
-        background: url(../images/page/prev.png) no-repeat        
+
+.no-svg .page--prev
+    background: url(../images/page/prev.png) no-repeat        
     
 
 
@@ -934,16 +893,33 @@ $page-nav-position-from-side:       5%
 //
 
 .page--next
+    text-align: right
+    float: right
+
+
+    // Display prev icon
+    background: url(../images/page/next.svg) no-repeat
+    background-position: 90% 50%
+    padding-left: 5%
+    padding-right: 12%
+
+    border-left: 1px dotted $black
+
 
     // Let's change it drastically.
     +breakpoint(lap)
 
+        // remove border left
+        border-left: none
+
+        // remove padding right
+        padding-left: 0
+
         // Position the navigation
         right: $page-nav-position-from-side
-        text-align: right
+
 
         // Display prev icon
-        background: url(../images/page/next.svg) no-repeat
         background-position: right
         padding-right: em-font(20px)
 
@@ -957,9 +933,8 @@ $page-nav-position-from-side:       5%
             +translateX(0)
 
 // Fall back for no svg supported browser
-+breakpoint(lap)
-    .no-svg .page--prev
-        background: url(../images/page/next.png) no-repeat        
+.no-svg .page--prev
+    background: url(../images/page/next.png) no-repeat        
 
 
 
@@ -1015,8 +990,8 @@ $page-nav-position-from-side:       5%
 
 
 .page--container .footer
-    background: $black-lighter
-
+    background: $black
+    overflow: hidden
 
     // Remove background color in order to match "White" background on laptop    
     +breakpoint(lap)
