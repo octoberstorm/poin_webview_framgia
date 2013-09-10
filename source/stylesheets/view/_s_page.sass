@@ -790,6 +790,8 @@ $silver-ratio                 : 141.42%
     font-weight: bold
     text-decoration: none
 
+
+
     &:hover
         background-color: $black-pure
         color: $black-lightest
@@ -815,12 +817,7 @@ $silver-ratio                 : 141.42%
         +padding-trailer(1)
 
 
-        // background arrow image
-        $page-arrow-size:          em-font(10px)
 
-        -webkit-background-size: $page-arrow-size
-        -moz-background-size: $page-arrow-size
-        background-size: $page-arrow-size
         +transition(transform .3s $easeInOutQuad)        
 
 
@@ -863,7 +860,12 @@ $page-nav-position-from-side:       5%
     padding-left: 12%
     padding-right: 5%
 
+    // background arrow image
+    $page-arrow-size:          em-font(10px)
 
+    -webkit-background-size: $page-arrow-size
+    -moz-background-size: $page-arrow-size
+    background-size: $page-arrow-size
 
     +breakpoint(lap)
         // Remove padding-right
@@ -903,6 +905,15 @@ $page-nav-position-from-side:       5%
     padding-left: 5%
     padding-right: 12%
 
+
+    // background arrow image
+    $page-arrow-size:          em-font(10px)
+
+    -webkit-background-size: $page-arrow-size
+    -moz-background-size: $page-arrow-size
+    background-size: $page-arrow-size
+
+    // Draw a separator border
     border-left: 1px dotted $black
 
 
@@ -990,7 +1001,7 @@ $page-nav-position-from-side:       5%
 
 
 .page--container .footer
-    background: $black
+    border-top: 1px dotted $black
     overflow: hidden
 
     // Remove background color in order to match "White" background on laptop    
